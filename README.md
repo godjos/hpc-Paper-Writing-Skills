@@ -31,6 +31,30 @@ Typical use cases:
 
 Assume you are in the repository root.
 
+### 0) `npx skills` installer
+
+If you want to install this skill through the `npx skills` CLI, Node.js 18+ is recommended.
+
+Install from the current repository:
+
+```bash
+npx skills add .
+```
+
+Install from a GitHub repository:
+
+```bash
+npx skills add https://github.com/godjos/hpc-Paper-Writing-Skills
+```
+
+Install only for Codex:
+
+```bash
+npx skills add . -a codex
+```
+
+You can also add `-g` to install globally, or `--list` to preview the skills before installing.
+
 ### 1) Codex
 
 Copy the skill into `$CODEX_HOME/skills/`:

@@ -29,6 +29,30 @@
 
 以下命令默认在仓库根目录执行。
 
+### 0) `npx skills` 安装器
+
+如果你想通过 `npx skills` CLI 安装这个技能，建议使用 Node.js 18+。
+
+从本地仓库安装：如果你已经把这个仓库克隆到本地电脑上，就在这个项目的根目录里执行 `npx skills add .`。
+
+```bash
+npx skills add .
+```
+
+从 GitHub 仓库安装：
+
+```bash
+npx skills add https://github.com/godjos/hpc-Paper-Writing-Skills
+```
+
+仅为 Codex 安装：
+
+```bash
+npx skills add . -a codex
+```
+
+也可以加上 `-g` 做全局安装，或使用 `--list` 在安装前预览可用技能。
+
 ### 1) Codex
 
 将技能复制到 `$CODEX_HOME/skills/`：
