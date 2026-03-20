@@ -1,20 +1,20 @@
-# Introduction Examples Index
+# Introduction Examples Index for HPC Papers
 
 All introduction example cites should point to the local files below.
 
-## A. Task and Application Versions
+## A. Workload, Platform, and Metric Versions
 
 1. Version 1: `references/examples/introduction/version-1-task-then-application.md`
 2. Version 2: `references/examples/introduction/version-2-application-first.md`
 3. Version 3: `references/examples/introduction/version-3-general-to-specific-setting.md`
 4. Version 4: `references/examples/introduction/version-4-open-with-challenge.md`
 
-## B. Technical Challenge Versions
+## B. Bottleneck and Challenge Versions
 
-1. Version 1 (existing task): `references/examples/introduction/technical-challenge-version-1-existing-task.md`
-2. Version 2 (existing task + traditional insight backing): `references/examples/introduction/technical-challenge-version-2-existing-task-insight-backed-by-traditional.md`
-3. Version 3 (novel task): `references/examples/introduction/technical-challenge-version-3-novel-task.md`
-4. Novel-task decomposition examples: `references/examples/introduction/novel-task-challenge-decomposition.md`
+1. Version 1 (existing workload): `references/examples/introduction/technical-challenge-version-1-existing-task.md`
+2. Version 2 (existing workload + traditional insight backing): `references/examples/introduction/technical-challenge-version-2-existing-task-insight-backed-by-traditional.md`
+3. Version 3 (novel workload): `references/examples/introduction/technical-challenge-version-3-novel-task.md`
+4. Novel-workload decomposition examples: `references/examples/introduction/novel-task-challenge-decomposition.md`
 
 ## C. Pipeline-Introduction Versions
 

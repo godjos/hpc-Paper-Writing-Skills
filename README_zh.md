@@ -1,4 +1,4 @@
-# Skills: Research Paper Writing
+# Skills: HPC Paper Writing
 
 > 重要归属说明
 > 本仓库中的大部分写作经验与方法论来自彭思达老师公开的学习笔记：
@@ -10,19 +10,20 @@
 
 ## 仓库介绍
 
-当前仓库提供 1 个技能包：
+当前仓库提供 1 个面向 HPC 和系统论文写作的技能包：
 
 - `research-paper-writing/`
-  - `SKILL.md`：核心流程与使用规则
-  - `references/`：按章节拆分的写作指南与模板
+  - `SKILL.md`：HPC 论文的核心流程与使用规则
+  - `references/`：按章节拆分的写作指南、检查清单与模板
   - `agents/openai.yaml`：Agent 元信息
 
 常见使用场景：
 
-- 撰写或重写 Abstract / Introduction / Method / Experiments / Conclusion
-- 改善段落衔接与章节逻辑
-- 做 claim-evidence 对齐检查
+- 撰写或重写 Abstract / Introduction / Related Work / Method / Experiments / Conclusion
+- 讲清楚系统范围、硬件假设和性能目标
+- 做 claim-evidence 对齐检查，尤其是与 scaling、profiling 和端到端结果对齐
 - 提交前从 reviewer 视角进行自审
+- 强化公平比较、可复现性和可扩展性叙述
 
 ## 安装方式
 
@@ -40,7 +41,7 @@ cp -R research-paper-writing "$CODEX_HOME/skills/"
 使用示例：
 
 ```text
-Use $research-paper-writing to improve my paper's Introduction.
+Use $research-paper-writing to improve my HPC paper's Introduction.
 ```
 
 ### 2) CC（Claude Code）
@@ -72,7 +73,7 @@ mkdir -p "$HOME/.gemini/skills"
 cp -R research-paper-writing "$HOME/.gemini/skills/"
 ```
 
-随后在 Gemini 中直接给出具体任务（例如：重写 Abstract 并做 claim-evidence 检查）。
+随后在 Gemini 中直接给出具体任务（例如：重写 Abstract，并做 claim-evidence 与 scaling 检查）。
 
 ## 致谢
 

@@ -1,17 +1,8 @@
-# Method Pre-Writing Questions
+# Pre-Writing Questions for HPC Method Sections
 
-
-`Before writing Method, answer: (1) what modules exist, and (2) for each module, what is its workflow, why is it needed, and why does it work.`
-
-```text
-Questions:
-(1) What modules are in the method?
-(2) For each module, answer three questions:
-    - What is this module's workflow?
-    - Why do we need this module?
-    - Why does this module work?
-```
-
-Recommended action:
-
-1. Organize answers in a mind map or table before writing paragraphs.
+1. What is the system model?
+2. What are the modules and execution order?
+3. Where do computation, communication, and synchronization happen?
+4. What bottleneck does each module address?
+5. Why should each module improve scalability or efficiency?
+6. What implementation details must be documented for reproduction?

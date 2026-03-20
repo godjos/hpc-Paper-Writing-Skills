@@ -1,23 +1,23 @@
-# Experiments Writing Guide
+# Experiments Writing Guide for HPC Papers
 
 ## Goal
 
-Convince reviewers with complete evidence on effectiveness, causality, and practical value.
+Convince reviewers with complete evidence on performance, scalability, causality, and practical value.
 
 ## Three Core Questions
 
 1. Is the method better than strong baselines?
    - Run comparison experiments against strong and recent baselines.
-   - Report standard metrics on the main benchmark(s).
-   - Include SOTA or strongest public methods, not only weak baselines.
-   - Keep protocol fair (same data split, preprocessing, and evaluation settings).
+   - Report standard metrics on the main benchmark(s), plus runtime and scaling metrics.
+   - Include the strongest public methods, not only weak baselines.
+   - Keep protocol fair (same hardware budget, preprocessing, tuning budget, and evaluation settings).
 2. Which modules/design choices make the gain?
    - Run ablation studies for each key module/design choice.
    - Use remove/replace/disable variants and report delta to full model.
    - Include component interaction ablations when modules are coupled.
 3. How far can the method generalize under harder settings?
    - Run demos/evaluations on harder or out-of-distribution settings.
-   - Add stress-test scenarios (more complex scenes, rarer cases, noisier inputs, or stricter constraints).
+   - Add stress-test scenarios such as larger problem sizes, more nodes, weaker network links, or tighter memory budgets.
    - Report both gains and failure modes to show realistic boundaries.
 
 ## Experiment Planning
@@ -32,7 +32,7 @@ flowchart TB
     C2 --> D2["Validation Experiment 2"]
     C3 --> D3["Validation Experiment 3"]
 
-    E["Method Pipeline Figure"] --> F["What Modules and Parameters Matter?"]
+    E["Method or System Figure"] --> F["What Modules and Parameters Matter?"]
     F --> G1["Technical Module 1"]
     F --> G2["Technical Module 2"]
     F --> G3["Key Parameter 1"]
@@ -47,9 +47,9 @@ flowchart TB
 
 ```mermaid
 flowchart TB
-    S1["Experimental Setup"] --> S2["Validation Experiment 1"]
-    S2 --> S3["Validation Experiment 2"]
-    S3 --> S4["Ablation Studies"]
+    S1["Experimental Setup and Environment"] --> S2["Single-Node / Single-GPU Validation"]
+    S2 --> S3["Multi-Node / Multi-GPU Scaling"]
+    S3 --> S4["Ablation Studies and Profiling"]
 ```
 
 ## Figure/Table Writing Rules
@@ -79,6 +79,7 @@ flowchart TB
 8. Keep caption focused on setting/protocol/notation, not long discussion.
 9. If there is little detail to explain, use one concise sentence to summarize the main result.
 10. For single-column figures/tables in two-column papers, prefer placing them in the right column when layout allows, so readers can enter the page from the left-top text without breaking reading flow.
+11. Always label the platform, problem size, and measurement method in the caption or table header.
 
 ### Minimal LaTeX checklist
 
@@ -91,7 +92,8 @@ flowchart TB
 
 1. One core ablation table for all major contributions.
 2. Several focused mini-ablations for module-level design choices.
-3. Matching qualitative visual results for each important ablation.
+3. Matching profiling or breakdown plots for each important ablation.
+4. If relevant, one table for strong scaling and one for weak scaling.
 
 ## Experimental Rigor Checklist
 
@@ -100,3 +102,6 @@ flowchart TB
 3. Is ablation tied to every key design claim?
 4. Are claims in Abstract/Introduction supported by reported numbers?
 5. Are limitations of evaluation scope explicitly stated?
+6. Did we report both absolute performance and scaling efficiency?
+7. Did we separate end-to-end results from kernel-level or local-module results?
+8. Did we document the hardware/software environment well enough to reproduce the benchmark?

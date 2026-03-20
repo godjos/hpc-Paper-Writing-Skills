@@ -3,7 +3,9 @@
 ```latex
 \section{Method}
 % Overview
-% Section 3.1
-% Section 3.2
-% Section 3.3
+% System model
+% Main module 1
+% Main module 2
+% Main module 3
+% Implementation details
 ```

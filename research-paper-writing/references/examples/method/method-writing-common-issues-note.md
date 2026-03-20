@@ -1,10 +1,7 @@
-# Method Writing Common Issues (Reference Note)
+# Common Method Writing Issues in HPC Papers
 
-Original source mentioned in your notes:
-
-1. `Method writing common issues (PDF in your source notes)`
-
-Usage recommendation:
-
-1. Use this reference as a troubleshooting checklist after drafting Method.
-2. Prioritize unclear motivation, broken flow, missing implementation details, and inconsistent terms.
+1. The system model is hidden too late.
+2. The module motivation is vague.
+3. The forward process is not described in execution order.
+4. The implementation details are missing.
+5. The paper claims speedup without explaining the source of the gain.

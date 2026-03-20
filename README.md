@@ -1,4 +1,4 @@
-# Skills: Research Paper Writing
+# Skills: HPC Paper Writing
 
 [中文介绍](./README_zh.md).
 
@@ -12,19 +12,20 @@
 
 ## Repository Overview
 
-This repository currently provides one skill package:
+This repository currently provides one skill package for HPC and system-style papers:
 
 - `research-paper-writing/`
-  - `SKILL.md`: core workflow and usage rules
-  - `references/`: section-specific writing guides and templates
+  - `SKILL.md`: core workflow and usage rules for HPC papers
+  - `references/`: section-specific writing guides, checklists, and templates
   - `agents/openai.yaml`: agent metadata
 
 Typical use cases:
 
-- Drafting or rewriting Abstract / Introduction / Method / Experiments / Conclusion
-- Improving paragraph flow and section logic
-- Checking claim-evidence alignment
+- Drafting or rewriting Abstract / Introduction / Related Work / Method / Experiments / Conclusion
+- Explaining system scope, hardware assumptions, and performance targets clearly
+- Checking claim-evidence alignment against scaling, profiling, and end-to-end results
 - Running pre-submission self-review from a reviewer mindset
+- Improving fair comparisons, reproducibility notes, and scalability narratives
 
 ## Installation
 
@@ -42,7 +43,7 @@ cp -R research-paper-writing "$CODEX_HOME/skills/"
 Usage example:
 
 ```text
-Use $research-paper-writing to improve my paper's Introduction.
+Use $research-paper-writing to improve my HPC paper's Introduction.
 ```
 
 ### 2) CC (Claude Code)
@@ -74,7 +75,7 @@ mkdir -p "$HOME/.gemini/skills"
 cp -R research-paper-writing "$HOME/.gemini/skills/"
 ```
 
-Then ask concrete tasks in Gemini (for example, rewriting an Abstract with claim-evidence checks).
+Then ask concrete tasks in Gemini (for example, rewriting an Abstract with claim-evidence and scaling checks).
 
 ## Credits
 

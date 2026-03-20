@@ -1,15 +1,6 @@
-# Module Motivation Writing Patterns
+# Module Motivation Patterns for HPC Papers
 
-
-`Module motivation is usually problem-driven: because a problem exists, we design xx to solve it.`
-
-Typical opening sentences:
-
-1. `A remaining problem/challenge is ...`
-2. `However, we ...`
-3. `Previous methods have difficulty in ...`
-
-Usage note:
-
-1. State the specific failure before introducing the module.
-2. Keep motivation independent from implementation details.
+1. A bottleneck is due to communication overhead.
+2. A bottleneck is due to load imbalance.
+3. A bottleneck is due to memory pressure.
+4. A bottleneck is due to poor overlap between compute and communication.

@@ -1,4 +1,4 @@
 interface:
-  display_name: "Research Paper Writing"
-  short_description: "Academic paper writing and section-level refinement"
-  default_prompt: "Use $research-paper-writing to improve my paper's structure, flow, and section writing quality."
+  display_name: "HPC Paper Writing"
+  short_description: "HPC and system paper writing with section-level refinement"
+  default_prompt: "Use $research-paper-writing to improve my HPC paper's structure, scalability story, and section writing quality."
