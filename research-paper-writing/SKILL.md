@@ -4,36 +4,34 @@ description: Improve HPC and system paper writing quality with clear section str
 ---
 # HPC Paper Writing
 
-## Overview
+## Purpose
 
 Use this skill to rewrite an HPC or systems paper into a reviewer-friendly, high-clarity draft.
-Prioritize first-impression quality, system scope clarity, logical flow, scalability evidence, and reproducible claims.
+Prioritize first-impression quality, scope clarity, logical flow, scalability evidence, and reproducible claims.
 
 ## Core Workflow
 
-1. Clarify the paper story before sentence-level edits: workload, platform, bottleneck, and target metric.
-2. Use section-specific guidance in `references/`.
-3. Rewrite paragraph-by-paragraph with one message per paragraph.
-4. Run reverse outlining after writing each section.
-5. Check every major claim in Abstract/Introduction against scaling, profiling, and end-to-end evidence.
-6. Run final-paper adversarial review with `references/paper-review.md`.
+1. Clarify the paper story first: workload, platform, bottleneck, and target metric.
+2. Load only the section-specific guidance you need from `references/`.
+3. Draft paragraph-by-paragraph, keeping one message per paragraph.
+4. Run reverse outlining after each section to verify flow and structure.
+5. Check major Abstract/Introduction claims against scaling, profiling, and end-to-end evidence.
+6. Finish with an adversarial self-review using `references/paper-review.md`.
 
-## Global Principles
+## Writing Principles
 
 1. Keep one paragraph for one message only.
 2. State the paragraph message in the first sentence.
-3. Make nouns self-contained; define workload names, hardware terms, and runtime terms before reusing them.
-4. Maintain sentence-to-sentence flow (cause, contrast, consequence, or refinement).
-5. Iterate with adversarial self-review: read as a skeptical reviewer.
-6. Treat visual quality as core content, not decoration.
-7. Use a clean system overview figure, pipeline figure, and if useful a profiling figure.
-8. Use readable, minimal-ink tables.
-9. Keep formatting consistent and tidy.
-10. State performance units, platform assumptions, and fairness protocol explicitly.
+3. Define workload names, hardware terms, and runtime terms before reusing them.
+4. Maintain sentence-to-sentence flow through cause, contrast, consequence, or refinement.
+5. Read as a skeptical reviewer and revise until the draft survives adversarial self-review.
+6. Treat visual quality as core content: use a clean system overview figure, pipeline figure, and, if useful, a profiling figure.
+7. Use readable, minimal-ink tables and keep formatting tidy and consistent.
+8. State performance units, platform assumptions, and fairness protocol explicitly.
 
-## Paragraph Clarity Check (Important)
+## Paragraph Clarity Check
 
-Use this quick test whenever the user asks whether a paragraph "flows" or is clear.
+Use this quick test whenever a paragraph needs a flow or clarity check.
 
 1. Read as an external reader:
    - Does this paragraph have one explicit message?
@@ -66,7 +64,7 @@ Load only the needed section file:
 - Paragraph clarity source: `references/does-my-writing-flow-source.md`
 - Example bank index: `references/examples/index.md`
 
-## Paper Review Core Points
+## Review and Evidence Checks
 
 Use `references/paper-review.md` for the full checklist and workflow.
 
@@ -80,6 +78,32 @@ Use `references/paper-review.md` for the full checklist and workflow.
 3. For HPC papers, treat scaling, throughput, latency, memory, energy, and portability as evidence dimensions.
 4. Perform adversarial writing: review as a skeptical reviewer and resolve every high-risk question.
 5. Revise until major rejection risks are explicitly addressed.
+
+## HPC-Specific Checks
+
+1. Make the contribution explicit: problem, novelty, contribution, and evidence should appear in a clear chain.
+2. Separate system improvement from baseline tuning; avoid phrasing that makes the work look like a minor patch.
+3. For experiments, check baseline choice, strong/weak scaling, sensitivity, ablation, workload diversity, and hardware/software disclosure.
+4. State fairness controls explicitly, including placement, affinity, NUMA/GPU handling, repetition count, and normalized comparisons when needed.
+5. Make figures and tables stand alone: every result visualization should support one claim and label axes, units, and conditions clearly.
+6. Include limitations, threats to validity, and reproducibility notes before finalizing the draft.
+7. Confirm submission readiness: abstract, introduction, method, evaluation, conclusion, and artifact/reproducibility notes all tell one consistent story.
+
+## Submission Readiness Checklist
+
+Use this final pass before submission or internal sign-off.
+
+1. Abstract: state the problem, key idea, and strongest result without unsupported claims.
+2. Introduction: explain why the problem matters, why existing approaches fall short, and what this paper contributes.
+3. Related Work: position the paper against the closest systems and clarify the differentiator.
+4. Method: define the system model, assumptions, and design choices clearly enough to reproduce the approach.
+5. Evaluation: include the right baselines, the right workloads, and the right metrics for the claim.
+6. Results: every headline claim should have direct evidence in a figure, table, or measured comparison.
+7. Figures and tables: verify labels, units, legends, captions, and axis scales are readable and consistent.
+8. Limitations: state what the system does not solve and where the evidence is incomplete.
+9. Reproducibility: check hardware/software versions, dataset or workload availability, seeds, parameters, and artifact references.
+10. Consistency: terminology, abbreviations, and contribution language should match across the whole draft.
+11. Final polish: check grammar, citation completeness, formatting, and conference or journal submission constraints.
 
 ## Execution Rules
 
@@ -101,3 +125,10 @@ When asked to rewrite or draft sections, return:
 3. A short self-review checklist covering clarity, flow, terminology consistency, unsupported claims, scaling evidence, and missing environment details.
 4. A claim-evidence map for each major claim in the revised text using `Claim: ... | Evidence: ... | Status: supported/needs evidence`.
 5. When relevant, add a compact note on platform assumptions and fairness protocol.
+
+## Safety and Fallbacks
+
+1. Load only the specific section guide needed for the current edit.
+2. If a claim is unsupported, weaken it or remove it.
+3. If flow remains weak, add temporary headers or transitions during revision, then remove unnecessary scaffolding before finalizing.
+4. Prefer concise, reviewer-facing prose over mechanical sentence patching.
