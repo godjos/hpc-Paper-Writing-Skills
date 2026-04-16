@@ -30,7 +30,7 @@ Prioritize first-impression quality, scope clarity, logical flow, scalability ev
 7. Read as a skeptical reviewer and revise until the draft survives adversarial self-review.
 8. Treat visual quality as core content: use a clean system overview figure, pipeline figure, and, if useful, a profiling figure.
 9. Use readable, minimal-ink tables and keep formatting tidy and consistent.
-10. State performance units, platform assumptions, and fairness protocol explicitly.
+10. State performance units, platform assumptions, and experimental settings clearly enough that comparison conditions are readable.
 
 ## Paragraph Clarity Check
 
@@ -91,7 +91,7 @@ Use `references/paper-review.md` for the full checklist and workflow.
 2. Separate system improvement from baseline tuning; avoid phrasing that makes the work look like a minor patch.
 3. Audit specialized terms for the correct layer: workload, algorithm, runtime, compiler, library, CPU/GPU architecture, memory hierarchy, network/interconnect, storage, and metric.
 4. For experiments, check baseline choice, strong/weak scaling, sensitivity, ablation, workload diversity, and hardware/software disclosure.
-5. State fairness controls explicitly, including placement, affinity, NUMA/GPU handling, repetition count, and normalized comparisons when needed.
+5. Check that baseline choice, placement, affinity, NUMA/GPU handling, repetition count, and normalization are clear from the experimental setup; add a clarifying comparison note only when the setup would otherwise be ambiguous or reviewer-sensitive.
 6. Make figures and tables stand alone: every result visualization should support one claim and label axes, units, and conditions clearly.
 7. Include limitations, threats to validity, and reproducibility notes before finalizing the draft.
 8. Confirm submission readiness: abstract, introduction, method, evaluation, conclusion, and artifact/reproducibility notes all tell one consistent story.
@@ -133,7 +133,7 @@ When asked to rewrite or draft sections, return:
 3. Revised paragraphs with explicit paragraph roles (opening/challenge/system model/method/advantage/evidence/limitation).
 4. A short self-review checklist covering clarity, flow, terminology consistency, unsupported claims, scaling evidence, and missing environment details.
 5. A claim-evidence map for each major claim in the revised text using `Claim: ... | Evidence: ... | Status: supported/needs evidence`.
-6. When relevant, add a compact note on platform assumptions and fairness protocol.
+6. When relevant, add a compact note on platform assumptions and comparison conditions, avoiding repetitive comparison caveats when the experimental setup already makes them clear.
 
 ## Safety and Fallbacks
 

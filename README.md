@@ -26,7 +26,7 @@ Typical use cases:
 - Preserving HPC-specific terminology through a workload/platform/metric terminology ledger
 - Checking claim-evidence alignment against scaling, profiling, and end-to-end results
 - Running pre-submission self-review from a reviewer mindset
-- Improving fair comparisons, reproducibility notes, and scalability narratives
+- Improving experimental setup clarity, reproducibility notes, and scalability narratives
 
 ## Installation
 

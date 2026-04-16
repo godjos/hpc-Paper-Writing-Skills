@@ -24,7 +24,7 @@
 - 通过 workload/platform/metric 术语表保持 HPC 专用术语一致
 - 做 claim-evidence 对齐检查，尤其是与 scaling、profiling 和端到端结果对齐
 - 提交前从 reviewer 视角进行自审
-- 强化公平比较、可复现性和可扩展性叙述
+- 强化实验设置清晰度、可复现性和可扩展性叙述
 
 ## 安装方式
 

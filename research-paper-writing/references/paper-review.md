@@ -23,7 +23,7 @@ If a claim is not supported, either add evidence or weaken/remove the claim.
 ## What Usually Gets a Paper Accepted
 
 1. Sufficient contribution (for example: novel task, novel pipeline, novel module, novel design choices, new experimental findings, or new insight).
-2. Better empirical performance than prior methods under fair comparisons.
+2. Better empirical performance than prior methods under clearly described comparison settings.
 3. Sufficient comparison experiments and ablation studies.
 4. Clear scaling behavior and believable system-level gains.
 
@@ -70,7 +70,7 @@ Use each question to trigger concrete edits before submission.
 ### 4. Evaluation Completeness
 
 1. Do we include ablations for all key design choices?
-2. Are all strong/recent baselines included under fair settings?
+2. Are all strong/recent baselines included, with settings clear enough for readers to judge comparability?
 3. Are evaluation metrics standard and sufficient for this task?
 4. Are datasets/workloads challenging enough to validate real effectiveness?
 5. Are comparison and ablation protocols clearly documented?

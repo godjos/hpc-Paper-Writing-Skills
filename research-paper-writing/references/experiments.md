@@ -4,7 +4,7 @@
 
 Convince reviewers with complete evidence on performance, scalability, causality, and practical value.
 
-Before planning results, use `references/hpc-terminology.md` to lock metric names, units, platform terms, baseline names, and fairness controls. Do not report generic `performance` when the claim is about runtime, throughput, latency, memory bandwidth, I/O bandwidth, energy, strong scaling, weak scaling, or parallel efficiency.
+Before planning results, use `references/hpc-terminology.md` to lock metric names, units, platform terms, baseline names, and comparison conditions. Do not report generic `performance` when the claim is about runtime, throughput, latency, memory bandwidth, I/O bandwidth, energy, strong scaling, weak scaling, or parallel efficiency.
 
 ## Three Core Questions
 
@@ -12,7 +12,7 @@ Before planning results, use `references/hpc-terminology.md` to lock metric name
    - Run comparison experiments against strong and recent baselines.
    - Report standard metrics on the main benchmark(s), plus runtime and scaling metrics.
    - Include the strongest public methods, not only weak baselines.
-   - Keep protocol fair (same hardware budget, preprocessing, tuning budget, and evaluation settings).
+   - Make the experimental setup clear enough for readers to infer comparable conditions, such as hardware budget, preprocessing, tuning budget, and evaluation settings.
    - Keep baseline names, hardware names, library names, and metric units exactly consistent across text, figures, and tables.
 2. Which modules/design choices make the gain?
    - Run ablation studies for each key module/design choice.
