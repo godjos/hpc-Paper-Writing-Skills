@@ -27,6 +27,17 @@ Typical use cases:
 - Checking claim-evidence alignment against scaling, profiling, and end-to-end results
 - Running pre-submission self-review from a reviewer mindset
 - Improving experimental setup clarity, reproducibility notes, and scalability narratives
+- Building a paper-intake canvas before rewriting: venue, paper type, bottleneck, evidence packet, and reviewer risks
+- Auditing baseline fairness, strong/weak scaling, profiling causality, and artifact readiness
+- Using HPC mini cases for MPI+CUDA stencil, sparse matrix kernels, collectives, checkpointing, and NUMA-aware runtimes
+
+Key high-level references:
+
+- `research-paper-writing/references/paper-intake.md`: intake canvas and reviewer-risk forecast
+- `research-paper-writing/references/performance-evidence.md`: claim-evidence matching for performance claims
+- `research-paper-writing/references/reproducibility-artifact.md`: hardware/software, build, launch, and artifact checklist
+- `research-paper-writing/references/venue-reviewer-profile.md`: venue-specific reviewer expectations
+- `research-paper-writing/references/figures-tables.md`: scaling, breakdown, roofline, timeline, and result-table guidance
 
 ## Installation
 

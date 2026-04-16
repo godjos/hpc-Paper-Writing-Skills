@@ -11,13 +11,14 @@ Prioritize first-impression quality, scope clarity, logical flow, scalability ev
 
 ## Core Workflow
 
-1. Clarify the paper story first: workload, platform, bottleneck, and target metric.
-2. Build an HPC terminology ledger before rewriting: workload, platform, parallel model, execution entities, memory/data movement, metrics, baselines, units, and environment assumptions.
-3. Load `references/hpc-terminology.md` plus only the section-specific guidance you need from `references/`.
-4. Draft paragraph-by-paragraph, keeping one message per paragraph and preserving the terminology ledger.
-5. Run reverse outlining after each section to verify flow, structure, and term consistency.
-6. Check major Abstract/Introduction claims against scaling, profiling, and end-to-end evidence.
-7. Finish with an adversarial self-review using `references/paper-review.md`.
+1. Run paper intake before rewriting: target venue, paper type, workload, platform, bottleneck, core claim, and available evidence.
+2. Clarify the paper story: problem -> bottleneck -> insight -> contribution -> evidence -> limitation.
+3. Build an HPC terminology ledger before rewriting: workload, platform, parallel model, execution entities, memory/data movement, metrics, baselines, units, and environment assumptions.
+4. Load `references/hpc-terminology.md` plus only the section-specific guidance you need from `references/`.
+5. Draft paragraph-by-paragraph, keeping one message per paragraph and preserving the terminology ledger.
+6. Run reverse outlining after each section to verify flow, structure, and term consistency.
+7. Check major Abstract/Introduction claims against end-to-end results, scaling, profiling, ablation, performance-model, and artifact evidence.
+8. Finish with an adversarial self-review using `references/paper-review.md`.
 
 ## Writing Principles
 
@@ -66,6 +67,11 @@ Load only the needed section file:
 - Conclusion: `references/conclusion.md`
 - Paper review: `references/paper-review.md`
 - HPC terminology: `references/hpc-terminology.md`
+- Paper intake: `references/paper-intake.md`
+- Performance evidence: `references/performance-evidence.md`
+- Reproducibility and artifact: `references/reproducibility-artifact.md`
+- Figures and tables: `references/figures-tables.md`
+- Venue and reviewer profile: `references/venue-reviewer-profile.md`
 - Paragraph clarity source: `references/does-my-writing-flow-source.md`
 - Example bank index: `references/examples/index.md`
 
@@ -92,9 +98,12 @@ Use `references/paper-review.md` for the full checklist and workflow.
 3. Audit specialized terms for the correct layer: workload, algorithm, runtime, compiler, library, CPU/GPU architecture, memory hierarchy, network/interconnect, storage, and metric.
 4. For experiments, check baseline choice, strong/weak scaling, sensitivity, ablation, workload diversity, and hardware/software disclosure.
 5. Check that baseline choice, placement, affinity, NUMA/GPU handling, repetition count, and normalization are clear from the experimental setup; add a clarifying comparison note only when the setup would otherwise be ambiguous or reviewer-sensitive.
-6. Make figures and tables stand alone: every result visualization should support one claim and label axes, units, and conditions clearly.
-7. Include limitations, threats to validity, and reproducibility notes before finalizing the draft.
-8. Confirm submission readiness: abstract, introduction, method, evaluation, conclusion, and artifact/reproducibility notes all tell one consistent story.
+6. Separate end-to-end gains from kernel-level, microbenchmark, or tuning-only gains.
+7. Check baseline fairness: compiler flags, library/runtime versions, placement, affinity, tuning budget, problem size, warm-up, repetitions, and normalization.
+8. Explain the source of performance gains with profiling, breakdowns, roofline reasoning, communication/memory analysis, or a lightweight performance model.
+9. Make figures and tables stand alone: every result visualization should support one claim and label axes, units, and conditions clearly.
+10. Include limitations, threats to validity, artifact readiness, and reproducibility notes before finalizing the draft.
+11. Confirm submission readiness: abstract, introduction, method, evaluation, conclusion, and artifact/reproducibility notes all tell one consistent story.
 
 ## Submission Readiness Checklist
 
@@ -111,6 +120,7 @@ Use this final pass before submission or internal sign-off.
 9. Reproducibility: check hardware/software versions, dataset or workload availability, seeds, parameters, and artifact references.
 10. Consistency: terminology, abbreviations, and contribution language should match across the whole draft.
 11. Final polish: check grammar, citation completeness, formatting, and conference or journal submission constraints.
+12. Reviewer risk: identify the closest-work, novelty, baseline-fairness, scaling, and artifact risks before final sign-off.
 
 ## Execution Rules
 
@@ -134,6 +144,10 @@ When asked to rewrite or draft sections, return:
 4. A short self-review checklist covering clarity, flow, terminology consistency, unsupported claims, scaling evidence, and missing environment details.
 5. A claim-evidence map for each major claim in the revised text using `Claim: ... | Evidence: ... | Status: supported/needs evidence`.
 6. When relevant, add a compact note on platform assumptions and comparison conditions, avoiding repetitive comparison caveats when the experimental setup already makes them clear.
+7. A venue/reviewer-risk note when the target venue or paper type is known.
+8. An experiment adequacy note covering baseline fairness, scaling evidence, profiling/causality, and end-to-end evidence.
+9. A reproducibility gap note covering missing hardware/software, build, launch, workload, and artifact details.
+10. A closest-work risk note when the claim may overlap with prior systems, algorithms, runtimes, or benchmarks.
 
 ## Safety and Fallbacks
 

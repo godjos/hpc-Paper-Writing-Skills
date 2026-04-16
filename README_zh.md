@@ -25,6 +25,17 @@
 - 做 claim-evidence 对齐检查，尤其是与 scaling、profiling 和端到端结果对齐
 - 提交前从 reviewer 视角进行自审
 - 强化实验设置清晰度、可复现性和可扩展性叙述
+- 在改写前建立 paper-intake 画布：venue、论文类型、瓶颈、证据包和 reviewer 风险
+- 审查 baseline 公平性、强/弱扩展、profiling 因果链和 artifact 准备情况
+- 使用 MPI+CUDA stencil、稀疏矩阵、collective、checkpointing、NUMA-aware runtime 等 HPC mini case
+
+关键高级参考文件：
+
+- `research-paper-writing/references/paper-intake.md`：开工前输入清单和 reviewer 风险预判
+- `research-paper-writing/references/performance-evidence.md`：性能 claim 与证据类型匹配
+- `research-paper-writing/references/reproducibility-artifact.md`：硬件/软件、构建、运行和 artifact 检查清单
+- `research-paper-writing/references/venue-reviewer-profile.md`：不同 venue 的 reviewer 关注点
+- `research-paper-writing/references/figures-tables.md`：扩展性图、breakdown、roofline、timeline 和结果表规范
 
 ## 安装方式
 

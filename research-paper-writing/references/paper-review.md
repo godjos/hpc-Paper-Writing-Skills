@@ -2,77 +2,90 @@
 
 ## Goal
 
-Use an adversarial, reviewer-style checklist to detect reject risks early and revise the paper before submission.
+Use an adversarial, reviewer-style checklist to detect rejection risks early and revise the paper before submission.
 
-## Core Principle
+Use `references/hpc-terminology.md`, `references/performance-evidence.md`, `references/reproducibility-artifact.md`, and `references/venue-reviewer-profile.md` during review when relevant.
 
-Pursue perfectionism in paper quality: assume reviewers will probe every weak point and proactively fix them.
-
-Use `references/hpc-terminology.md` during review. A paper can be logically well structured but still weak if HPC terms are vague, inconsistent, or attached to the wrong system layer.
-
-## Critical Rule (Do Not Violate)
+## Critical Rule
 
 Every major claim, especially in Abstract and Introduction, must be:
 
-1. technically correct, and
-2. explicitly supported by experimental evidence.
-3. expressed with precise terminology for the workload, platform, metric, and bottleneck.
+1. technically correct,
+2. explicitly supported by experimental evidence,
+3. expressed with precise terminology for workload, platform, metric, and bottleneck,
+4. scoped to the setting actually evaluated.
 
-If a claim is not supported, either add evidence or weaken/remove the claim.
+If a claim is not supported, either add evidence, weaken it, or remove it.
 
 ## What Usually Gets a Paper Accepted
 
-1. Sufficient contribution (for example: novel task, novel pipeline, novel module, novel design choices, new experimental findings, or new insight).
-2. Better empirical performance than prior methods under clearly described comparison settings.
-3. Sufficient comparison experiments and ablation studies.
-4. Clear scaling behavior and believable system-level gains.
+1. Clear contribution: new system, runtime, compiler, algorithm, performance model, benchmark finding, or insight.
+2. Meaningful improvement over strong baselines under fair comparison settings.
+3. Complete evidence: end-to-end results, scaling, ablation, profiling, and limitations.
+4. Clear explanation of why the method works and where it stops working.
+5. Credible reproducibility and artifact story.
+
+## Reviewer Scorecard
+
+Mark each item as `pass`, `needs revision`, `needs experiment`, or `remove claim`.
+
+| Dimension | Reviewer question | Typical required evidence |
+|-----------|-------------------|---------------------------|
+| Novelty | What new knowledge does this paper provide? | Closest-work distinction and explicit contribution |
+| Technical depth | Is the mechanism nontrivial and well explained? | System/execution model, algorithm, performance rationale |
+| Experimental rigor | Are results fair and complete? | Strong baselines, tuning details, repetitions, variability |
+| Scalability | Does the method scale under meaningful conditions? | Strong/weak scaling, efficiency, scaling ceiling |
+| Causality | Do results explain the source of improvement? | Ablation, profiling, breakdown, roofline, performance model |
+| Reproducibility | Could a knowledgeable reader rerun the main results? | Hardware/software, build, launch, workloads, artifact |
+| Related work | Would reviewers accept the distinction from closest work? | Closest-work matrix and "why not X" answer |
+| Limitations | Are boundaries stated honestly? | Scope, failure cases, unsupported settings |
 
 ## Common Rejection Dimensions
 
-| Rejection Dimension | Typical Failure Signals |
+| Rejection dimension | Typical failure signals |
 |---------------------|-------------------------|
-| 1. Insufficient contribution | 1.1 Targeted failure cases are too common.<br />1.2 Proposed technique is already well explored; expected gains are predictable/well-known. |
-| 2. Unclear writing | 2.1 Missing system details; work is not reproducible.<br />2.2 A module lacks clear motivation tied to a bottleneck.<br />2.3 Hardware/software assumptions are hidden. |
-| 3. Weak empirical effect | 3.1 Improvement over prior methods is only marginal.<br />3.2 Even if better than previous methods, absolute performance or efficiency is still not strong enough. |
-| 4. Incomplete evaluation | 4.1 Missing ablation studies.<br />4.2 Missing important baselines, scaling curves, or important metrics.<br />4.3 Workloads are too small/simple to prove the method truly works. |
-| 5. Problematic method design | 5.1 Experimental setting is unrealistic.<br />5.2 Method has technical flaws and appears unreasonable.<br />5.3 Method is not robust and needs per-scenario hyperparameter tuning.<br />5.4 New design introduces stronger complexity, memory cost, or communication cost than its benefits, leading to negative net value. |
+| Insufficient contribution | Targeted failure case is too common; idea is predictable; closest work not addressed |
+| Unclear writing | Missing system details; terms change across sections; module motivation is vague |
+| Weak empirical effect | Marginal speedup; weak absolute performance; no efficiency or scalability analysis |
+| Incomplete evaluation | Missing ablations, important baselines, scaling curves, profiling, or workload diversity |
+| Baseline unfairness | Untuned baselines, unclear flags, different hardware budgets, missing affinity/placement |
+| Unsupported causality | Speedup reported without explaining communication, memory, synchronization, I/O, or load balance |
+| Poor reproducibility | Missing versions, build flags, launch commands, problem sizes, or artifact instructions |
+| Problematic design | Unrealistic assumptions; high memory/communication cost; hidden synchronization blowups |
 
-## End-of-Paper Self-Review Question List
-
-Add this checklist near the end of the draft while revising.
-Use each question to trigger concrete edits before submission.
+## End-of-Paper Self-Review Questions
 
 ### 1. Contribution
 
 1. What new knowledge does this paper give to readers?
-2. Are we solving a truly meaningful failure case, not a trivial/common one?
-3. Is the technical idea genuinely non-obvious beyond well-explored practice?
-4. Is our gain surprising or insightful rather than a predictable improvement?
-5. Is there at least one clear novelty type (system design, runtime design, communication design, scheduling insight, or benchmark finding)?
+2. Is the solved failure case meaningful for the target venue?
+3. Is the technical idea non-obvious beyond well-explored practice?
+4. Is the gain surprising, explanatory, or useful rather than a predictable tuning result?
+5. Is there at least one clear novelty type: system design, runtime design, communication design, scheduling insight, compiler transformation, algorithmic insight, benchmark finding, or performance model?
 
 ### 2. Writing Clarity
 
 1. Can a knowledgeable reader reproduce the method from the paper?
 2. Did we provide enough technical detail for each key module?
-3. Is the motivation of every module explicit and logically connected to a bottleneck?
-4. Are terms and notation consistent across sections?
+3. Is the motivation of every module tied to a named bottleneck?
+4. Are workload names, hardware names, metric names, and execution entities consistent?
 5. Does each paragraph carry one clear message with smooth transitions?
-6. Are workload names, hardware names, and metric names used consistently?
 
 ### 3. Experimental Strength
 
 1. Are improvements over strong baselines meaningful, not just statistically tiny?
 2. Is absolute performance competitive enough for the target venue?
-3. Are gains consistent across multiple workloads/settings/metrics?
+3. Are gains consistent across multiple workloads, scales, or metrics?
 4. Do we report both strengths and failure cases honestly?
 5. Did we show both scaling and efficiency, not only one of them?
+6. Did we separate end-to-end results from kernel-level or microbenchmark results?
 
 ### 4. Evaluation Completeness
 
 1. Do we include ablations for all key design choices?
 2. Are all strong/recent baselines included, with settings clear enough for readers to judge comparability?
 3. Are evaluation metrics standard and sufficient for this task?
-4. Are datasets/workloads challenging enough to validate real effectiveness?
+4. Are workloads challenging enough to validate real effectiveness?
 5. Are comparison and ablation protocols clearly documented?
 6. Do we provide strong scaling, weak scaling, and profiling evidence when relevant?
 7. Do we report the hardware/software environment well enough for reproduction?
@@ -84,12 +97,24 @@ Use each question to trigger concrete edits before submission.
 3. Is the method robust without heavy per-case hyperparameter retuning?
 4. Do benefits outweigh added complexity and new limitations?
 5. Could reviewers reasonably argue that the net benefit is negative?
-6. Does the design avoid hidden communication, memory, or synchronization blowups?
+6. Does the design avoid hidden communication, memory, synchronization, scheduling, or I/O blowups?
+
+## Reject-Risk Diagnosis
+
+When a draft feels weak, diagnose the most likely rejection reason:
+
+1. Predictable optimization: strengthen the insight, closest-work distinction, or performance model.
+2. Weak baseline: add or justify stronger baselines and tuning policy.
+3. No scaling story: add strong/weak scaling, efficiency, and scaling-ceiling explanation.
+4. Unclear speedup source: add ablation, profiling, breakdown, roofline, or model evidence.
+5. Non-reproducible setup: add hardware/software, build, launch, and workload details.
+6. Unsupported portability claim: narrow the claim or add platforms/backends.
+7. Hidden limitation: state the scope boundary and explain why the contribution remains valuable.
 
 ## Adversarial Writing Workflow
 
-1. Read the paper as a skeptical reviewer.
-2. Answer every question above with explicit evidence from the paper.
-3. Mark each item as `pass`, `needs revision`, or `needs new experiment`.
-4. Revise claims, writing, experiments, or method scope accordingly.
+1. Read the paper as a skeptical reviewer for the target venue.
+2. Answer every scorecard item with explicit evidence from the paper.
+3. Mark each item as `pass`, `needs revision`, `needs experiment`, or `remove claim`.
+4. Revise claims, writing, experiments, method scope, or limitations accordingly.
 5. Repeat until no major rejection risk remains.

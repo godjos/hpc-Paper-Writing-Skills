@@ -11,7 +11,8 @@ Use this folder for concrete writing patterns and locally organized cite targets
 5. Introduction bottleneck and challenge files: `references/examples/introduction/technical-challenge-version-1-existing-task.md`, `references/examples/introduction/technical-challenge-version-2-existing-task-insight-backed-by-traditional.md`, `references/examples/introduction/technical-challenge-version-3-novel-task.md`, `references/examples/introduction/novel-task-challenge-decomposition.md`
 6. Introduction pipeline files: `references/examples/introduction/pipeline-version-1-one-contribution-multi-advantages.md`, `references/examples/introduction/pipeline-version-2-two-contributions.md`, `references/examples/introduction/pipeline-version-3-new-module-on-existing-pipeline.md`, `references/examples/introduction/pipeline-version-4-observation-driven.md`, `references/examples/introduction/pipeline-not-recommended-abstract-only.md`
 7. Method examples index: `references/examples/method-examples.md`
-8. Method detail files: `references/examples/method/pre-writing-questions.md`, `references/examples/method/module-triad-neural-body.md`, `references/examples/method/neural-body-annotated-figure-text.md`, `references/examples/method/module-design-instant-ngp.md`, `references/examples/method/module-motivation-patterns.md`, `references/examples/method/section-skeleton.md`, `references/examples/method/overview-template.md`, `references/examples/method/example-of-the-three-elements.md`, `references/examples/method/method-writing-common-issues-note.md`
+8. Method detail files: `references/examples/method/pre-writing-questions.md`, `references/examples/method/module-triad-mpi-cuda-stencil.md`, `references/examples/method/annotated-system-overview-halo-exchange.md`, `references/examples/method/module-design-communication-overlap.md`, `references/examples/method/module-motivation-patterns.md`, `references/examples/method/section-skeleton.md`, `references/examples/method/overview-template.md`, `references/examples/method/example-of-the-three-elements.md`, `references/examples/method/method-writing-common-issues-note.md`
+9. HPC mini cases: `references/examples/hpc/mpi-cuda-stencil.md`, `references/examples/hpc/sparse-matrix-gpu.md`, `references/examples/hpc/collective-optimization.md`, `references/examples/hpc/parallel-io-checkpointing.md`, `references/examples/hpc/numa-aware-task-runtime.md`
 
 ## Usage
 
@@ -20,3 +21,4 @@ Use this folder for concrete writing patterns and locally organized cite targets
 3. Reuse the sentence logic, not exact wording.
 4. Keep citation links in your notes for traceability.
 5. Apply `references/hpc-terminology.md` before adapting any example so the template does not erase HPC-specific terms.
+6. Prefer HPC mini cases when the task involves performance claims, scaling, profiling, artifact notes, or reviewer-risk diagnosis.
