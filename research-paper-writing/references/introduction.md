@@ -8,6 +8,8 @@ Write a strong HPC introduction in three steps:
 2. Apply a suitable template below.
 3. Revise the introduction repeatedly.
 
+Before choosing a template, create a terminology ledger using `references/hpc-terminology.md`. The Introduction should not replace specialized HPC terms with generic prose: workload, platform, parallel model, execution entities, memory/data movement, metrics, and baselines must stay precise.
+
 ## Introduction Logic Map
 
 ```mermaid
@@ -55,6 +57,7 @@ graph LR
 2. What are the contributions of our pipeline, runtime, or system design?
 3. What are the benefits of our contributions, why can they solve this technical challenge, and what measurable insight do they bring? (important)
 4. How do we use prior methods to lead readers to our solved bottleneck and our new insight?
+5. Which specialized terms must remain stable across the whole Introduction?
 
 ### Forward story (write in this order)
 
@@ -62,12 +65,14 @@ graph LR
 2. Use prior methods to lead to the technical challenge we solve.
 3. Present xx contributions to solve this technical challenge.
 4. Explain technical advantages of our contributions and explicitly express our new insight. (important)
+5. Recheck every paragraph against the terminology ledger before finalizing.
 
 ## Section Skeleton
 
 ```latex
 \section{Introduction}
 % Workload/system context and why the target metric matters
+% Terminology ledger: workload, platform, parallel model, execution entity, memory/data movement, metric, baseline
 % Technical challenge for previous methods (limitation + root cause)
 % Introduce our pipeline or system for solving the challenge
 % Evidence summary
@@ -85,11 +90,13 @@ Writing structure:
 1. Define the workload, platform, or system setting in one clear sentence.
 2. Briefly explain the target metric or system objective.
 3. Introduce application value with 2-3 representative scenarios.
+4. Use exact terms for the platform and execution model, such as MPI ranks, OpenMP threads, GPU kernels, NUMA domains, collectives, or host-device transfers when relevant.
 
 Sentence skeleton:
 
 1. `[xxx workload/system] targets at reducing runtime / increasing throughput / improving efficiency under [xxx platform or constraint].`
 2. `[xxx workload/system] has a variety of applications such as [xxx], [xxx], and [xxx].`
+3. `In this setting, [canonical execution entity] and [canonical memory/data-movement term] dominate [target metric].`
 
 Local cite:
 
@@ -104,10 +111,12 @@ Writing structure:
 1. Skip formal task definition.
 2. Open with application importance in one concise sentence.
 3. Optionally append target requirement (e.g., efficiency/scaling/latency/energy).
+4. Name the exact HPC metric instead of using generic `performance`.
 
 Sentence skeleton:
 
 1. `[xxx workload/system] has a variety of applications such as [xxx], [xxx], and [xxx].`
+2. `These applications require [strong/weak scaling, throughput, latency, memory bandwidth, energy efficiency] on [platform].`
 
 Local cite:
 
@@ -122,11 +131,13 @@ Writing structure:
 1. Start from the general task and why it matters.
 2. Narrow down to the specific setting of this paper.
 3. Clarify exact workload, platform, and boundary of the setting.
+4. Preserve names for libraries, runtimes, hardware generations, and metrics.
 
 Sentence skeleton:
 
 1. `[general HPC/system class] has a variety of applications such as [xxx], [xxx], and [xxx].`
 2. `This paper focuses on the specific setting of improving [xxx metric] for [xxx workload] under [xxx hardware or software constraint].`
+3. `We use [canonical term] to refer to [definition], and keep this term throughout the paper.`
 
 Local cite:
 
@@ -142,12 +153,14 @@ Writing structure:
 2. Immediately summarize how representative previous methods work.
 3. Immediately expose the unresolved failure case + technical reason.
 4. Use this opening as a bridge to the later prior-work paragraphs.
+5. Make the failure case term precise: collective synchronization, load imbalance, memory bandwidth saturation, I/O contention, kernel launch overhead, host-device transfer, or another exact bottleneck.
 
 Opening-paragraph skeleton:
 
 1. `[Task/application importance sentence].`
 2. `Given workload ..., previous methods usually ...`
 3. `Although they work in many cases, they fail at ... because ...`
+4. `This failure appears as [metric degradation] under [platform/problem-size condition].`
 
 Expert note:
 
@@ -167,6 +180,7 @@ Purpose:
 1. Discuss around the exact technical bottleneck we solved.
 2. Build reader curiosity about how to solve this challenge.
 3. Make motivation/benefit of our method clear.
+4. Use bottleneck terms that identify the system layer, not generic phrases like `low efficiency` or `high overhead` alone.
 
 Key logic before writing (faithful translation):
 
@@ -192,6 +206,7 @@ Writing structure:
 3. Briefly summarize recent methods (1) and their limitation with technical reason.
 4. Briefly summarize recent methods (2) and their limitation with technical reason.
 5. Ensure the final limitation is exactly the bottleneck your method solves.
+6. Keep entity names stable: if the limitation is per-rank imbalance, do not later call it per-thread imbalance.
 
 Sentence skeleton:
 
@@ -199,6 +214,7 @@ Sentence skeleton:
 2. `To overcome these challenges, traditional methods ... However, they ...`
 3. `Recently, ... methods ... However, they ... because ...`
 4. `To overcome this bottleneck, ... methods ... However, they ... because ...`
+5. `As a result, [canonical metric] degrades when [canonical execution/memory/communication condition].`
 
 Local cite:
 
@@ -215,6 +231,7 @@ Writing structure:
 3. Explain why that classical line is still insufficient.
 4. Return to modern methods and show the unresolved technical reason.
 5. Bridge to your method naturally.
+6. Use the same terminology when comparing classical and modern methods; otherwise the conceptual lineage becomes unclear.
 
 Sentence skeleton:
 
@@ -234,6 +251,7 @@ Writing structure:
 2. Split the challenge into 2-3 barriers, such as communication cost, synchronization cost, load imbalance, or memory pressure.
 3. Explain why each barrier is hard in this setting.
 4. Use the decomposition to motivate the method.
+5. Assign each barrier a canonical term and reuse that term in the contribution paragraph.
 
 Local cite:
 
@@ -247,6 +265,7 @@ Local cite:
 2. Name the main modules and what each module solves.
 3. Explain why the pipeline should improve the target metric.
 4. Mention what the experiments confirm.
+5. Map module names to terminology-ledger terms so the same module is not renamed later.
 
 ### Version 2
 
@@ -274,3 +293,4 @@ Local cite:
 3. Are system assumptions and metric targets explicit?
 4. Are all technical terms introduced before reuse?
 5. Does each paragraph carry one clear message with smooth transitions?
+6. Do HPC terms stay precise and consistent across workload, platform, execution entities, bottlenecks, metrics, and baselines?

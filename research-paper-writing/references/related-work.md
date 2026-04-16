@@ -4,12 +4,15 @@
 
 Position your work against the most relevant lines of research, and make your novelty easy to verify.
 
+Use `references/hpc-terminology.md` before grouping papers. Related Work should compare mechanisms and assumptions using precise HPC terms, not generic labels such as `optimization`, `resources`, or `performance`.
+
 ## Workflow
 
 1. List directly competing and recent baseline papers first.
 2. Group literature by technical topic and system layer, not by publication year alone.
 3. For each topic: summarize common paradigm, then key limitation relevant to your bottleneck.
 4. End each topic by clarifying your distinction.
+5. Preserve canonical names for systems, libraries, algorithms, execution models, and metrics used by the cited work.
 
 ## Topic Design
 

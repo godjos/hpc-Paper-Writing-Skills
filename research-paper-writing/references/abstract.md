@@ -8,6 +8,8 @@ Write a strong HPC abstract by doing three things repeatedly:
 2. Follow one template (Version 1/2/3 below).
 3. Revise the abstract many times.
 
+Before drafting, use `references/hpc-terminology.md` to lock the canonical workload, platform, bottleneck, metric, and evidence terms. The abstract is short, so every specialized term must be both precise and necessary.
+
 ## Pre-Writing Questions (Important)
 
 Answer these before writing:
@@ -17,6 +19,7 @@ Answer these before writing:
 3. What is our technical contribution?
 4. Why can our method work in essence?
 5. What measurable advantage do we provide: runtime, throughput, latency, memory, energy, or scalability? (important)
+6. Which exact HPC terms must not be paraphrased away, such as MPI rank, GPU kernel, all-reduce, HBM, NUMA, strong scaling, or weak scaling?
 
 ## Version 1: Bottleneck -> Contribution
 

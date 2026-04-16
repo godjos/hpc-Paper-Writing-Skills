@@ -1,4 +1,4 @@
 interface:
   display_name: "HPC Paper Writing"
-  short_description: "HPC and system paper writing with section-level refinement"
-  default_prompt: "Use $research-paper-writing to improve my HPC paper's structure, scalability story, and section writing quality."
+  short_description: "HPC and system paper writing with terminology-aware section refinement"
+  default_prompt: "Use $research-paper-writing to improve my HPC paper's terminology, structure, scalability story, and section writing quality."

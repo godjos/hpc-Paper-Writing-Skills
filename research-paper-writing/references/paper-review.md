@@ -8,12 +8,15 @@ Use an adversarial, reviewer-style checklist to detect reject risks early and re
 
 Pursue perfectionism in paper quality: assume reviewers will probe every weak point and proactively fix them.
 
+Use `references/hpc-terminology.md` during review. A paper can be logically well structured but still weak if HPC terms are vague, inconsistent, or attached to the wrong system layer.
+
 ## Critical Rule (Do Not Violate)
 
 Every major claim, especially in Abstract and Introduction, must be:
 
 1. technically correct, and
 2. explicitly supported by experimental evidence.
+3. expressed with precise terminology for the workload, platform, metric, and bottleneck.
 
 If a claim is not supported, either add evidence or weaken/remove the claim.
 

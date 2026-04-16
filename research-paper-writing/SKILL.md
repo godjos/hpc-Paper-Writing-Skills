@@ -12,22 +12,25 @@ Prioritize first-impression quality, scope clarity, logical flow, scalability ev
 ## Core Workflow
 
 1. Clarify the paper story first: workload, platform, bottleneck, and target metric.
-2. Load only the section-specific guidance you need from `references/`.
-3. Draft paragraph-by-paragraph, keeping one message per paragraph.
-4. Run reverse outlining after each section to verify flow and structure.
-5. Check major Abstract/Introduction claims against scaling, profiling, and end-to-end evidence.
-6. Finish with an adversarial self-review using `references/paper-review.md`.
+2. Build an HPC terminology ledger before rewriting: workload, platform, parallel model, execution entities, memory/data movement, metrics, baselines, units, and environment assumptions.
+3. Load `references/hpc-terminology.md` plus only the section-specific guidance you need from `references/`.
+4. Draft paragraph-by-paragraph, keeping one message per paragraph and preserving the terminology ledger.
+5. Run reverse outlining after each section to verify flow, structure, and term consistency.
+6. Check major Abstract/Introduction claims against scaling, profiling, and end-to-end evidence.
+7. Finish with an adversarial self-review using `references/paper-review.md`.
 
 ## Writing Principles
 
 1. Keep one paragraph for one message only.
 2. State the paragraph message in the first sentence.
 3. Define workload names, hardware terms, and runtime terms before reusing them.
-4. Maintain sentence-to-sentence flow through cause, contrast, consequence, or refinement.
-5. Read as a skeptical reviewer and revise until the draft survives adversarial self-review.
-6. Treat visual quality as core content: use a clean system overview figure, pipeline figure, and, if useful, a profiling figure.
-7. Use readable, minimal-ink tables and keep formatting tidy and consistent.
-8. State performance units, platform assumptions, and fairness protocol explicitly.
+4. Use precise HPC terms for the correct system layer: node/socket/NUMA domain/core, process/rank/thread/task, GPU/SM/warp/kernel, cache/DRAM/HBM, PCIe/NVLink/InfiniBand/RDMA, collective/halo exchange/I/O, and strong/weak scaling.
+5. Preserve canonical names, abbreviations, capitalization, and units from the user's draft unless a naming change is requested.
+6. Maintain sentence-to-sentence flow through cause, contrast, consequence, or refinement.
+7. Read as a skeptical reviewer and revise until the draft survives adversarial self-review.
+8. Treat visual quality as core content: use a clean system overview figure, pipeline figure, and, if useful, a profiling figure.
+9. Use readable, minimal-ink tables and keep formatting tidy and consistent.
+10. State performance units, platform assumptions, and fairness protocol explicitly.
 
 ## Paragraph Clarity Check
 
@@ -37,6 +40,7 @@ Use this quick test whenever a paragraph needs a flow or clarity check.
    - Does this paragraph have one explicit message?
    - Does the first sentence state what this paragraph will do?
    - Are all key nouns/terms readable without hidden context?
+   - Do specialized HPC terms match the terminology ledger and the correct system layer?
    - Does each sentence connect to the previous one with a clear relation (cause, contrast, consequence, refinement, example)?
 2. Run reverse outlining for the current section:
    - Write down thesis/main claim.
@@ -61,6 +65,7 @@ Load only the needed section file:
 - Experiments: `references/experiments.md`
 - Conclusion: `references/conclusion.md`
 - Paper review: `references/paper-review.md`
+- HPC terminology: `references/hpc-terminology.md`
 - Paragraph clarity source: `references/does-my-writing-flow-source.md`
 - Example bank index: `references/examples/index.md`
 
@@ -76,18 +81,20 @@ Use `references/paper-review.md` for the full checklist and workflow.
    - method design soundness.
 2. Treat claim-evidence alignment as a hard constraint, especially for Abstract and Introduction.
 3. For HPC papers, treat scaling, throughput, latency, memory, energy, and portability as evidence dimensions.
-4. Perform adversarial writing: review as a skeptical reviewer and resolve every high-risk question.
-5. Revise until major rejection risks are explicitly addressed.
+4. Treat terminology-evidence alignment as a hard constraint: every specialized term, metric, and platform assumption should either be defined, measured, cited, or marked as unknown.
+5. Perform adversarial writing: review as a skeptical reviewer and resolve every high-risk question.
+6. Revise until major rejection risks are explicitly addressed.
 
 ## HPC-Specific Checks
 
 1. Make the contribution explicit: problem, novelty, contribution, and evidence should appear in a clear chain.
 2. Separate system improvement from baseline tuning; avoid phrasing that makes the work look like a minor patch.
-3. For experiments, check baseline choice, strong/weak scaling, sensitivity, ablation, workload diversity, and hardware/software disclosure.
-4. State fairness controls explicitly, including placement, affinity, NUMA/GPU handling, repetition count, and normalized comparisons when needed.
-5. Make figures and tables stand alone: every result visualization should support one claim and label axes, units, and conditions clearly.
-6. Include limitations, threats to validity, and reproducibility notes before finalizing the draft.
-7. Confirm submission readiness: abstract, introduction, method, evaluation, conclusion, and artifact/reproducibility notes all tell one consistent story.
+3. Audit specialized terms for the correct layer: workload, algorithm, runtime, compiler, library, CPU/GPU architecture, memory hierarchy, network/interconnect, storage, and metric.
+4. For experiments, check baseline choice, strong/weak scaling, sensitivity, ablation, workload diversity, and hardware/software disclosure.
+5. State fairness controls explicitly, including placement, affinity, NUMA/GPU handling, repetition count, and normalized comparisons when needed.
+6. Make figures and tables stand alone: every result visualization should support one claim and label axes, units, and conditions clearly.
+7. Include limitations, threats to validity, and reproducibility notes before finalizing the draft.
+8. Confirm submission readiness: abstract, introduction, method, evaluation, conclusion, and artifact/reproducibility notes all tell one consistent story.
 
 ## Submission Readiness Checklist
 
@@ -108,27 +115,29 @@ Use this final pass before submission or internal sign-off.
 ## Execution Rules
 
 1. Build a mini-outline before drafting prose.
-2. For each subsection, explicitly include motivation, design, and technical advantage when applicable.
-3. When relevant, state system model, workload assumptions, and hardware/software environment before details.
-4. Avoid writing style that looks like incremental patching of a naive baseline.
-5. Keep terminology stable across the full paper.
-6. If a claim cannot be supported by results, weaken or remove the claim.
-7. Before finalizing, append and answer a five-dimension self-review question list, then revise the paper based on unresolved items.
-8. Do not load all section references at once; load only the specific section guide needed for the current edit target.
+2. Build a terminology ledger before drafting prose and use it as a constraint during every rewrite.
+3. For each subsection, explicitly include motivation, design, and technical advantage when applicable.
+4. When relevant, state system model, workload assumptions, and hardware/software environment before details.
+5. Avoid writing style that looks like incremental patching of a naive baseline.
+6. Keep terminology stable across the full paper.
+7. If a claim cannot be supported by results, weaken or remove the claim.
+8. Before finalizing, append and answer a five-dimension self-review question list, then revise the paper based on unresolved items.
+9. Do not load all section references at once; load only `references/hpc-terminology.md` and the specific section guide needed for the current edit target.
 
 ## Output Contract
 
 When asked to rewrite or draft sections, return:
 
-1. A compact section outline (3-7 bullets).
-2. Revised paragraphs with explicit paragraph roles (opening/challenge/system model/method/advantage/evidence/limitation).
-3. A short self-review checklist covering clarity, flow, terminology consistency, unsupported claims, scaling evidence, and missing environment details.
-4. A claim-evidence map for each major claim in the revised text using `Claim: ... | Evidence: ... | Status: supported/needs evidence`.
-5. When relevant, add a compact note on platform assumptions and fairness protocol.
+1. A compact HPC terminology ledger listing canonical workload/platform/parallel-model/execution-entity/metric/baseline terms used in the rewrite.
+2. A compact section outline (3-7 bullets).
+3. Revised paragraphs with explicit paragraph roles (opening/challenge/system model/method/advantage/evidence/limitation).
+4. A short self-review checklist covering clarity, flow, terminology consistency, unsupported claims, scaling evidence, and missing environment details.
+5. A claim-evidence map for each major claim in the revised text using `Claim: ... | Evidence: ... | Status: supported/needs evidence`.
+6. When relevant, add a compact note on platform assumptions and fairness protocol.
 
 ## Safety and Fallbacks
 
-1. Load only the specific section guide needed for the current edit.
+1. Load only `references/hpc-terminology.md` and the specific section guide needed for the current edit.
 2. If a claim is unsupported, weaken it or remove it.
 3. If flow remains weak, add temporary headers or transitions during revision, then remove unnecessary scaffolding before finalizing.
 4. Prefer concise, reviewer-facing prose over mechanical sentence patching.

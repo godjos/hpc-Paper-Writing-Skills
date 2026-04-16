@@ -2,6 +2,8 @@
 
 All introduction example cites should point to the local files below.
 
+Each example includes terminology anchors. Use them with `references/hpc-terminology.md` so introduction rewrites keep workload, platform, execution-entity, bottleneck, metric, and baseline terms precise.
+
 ## A. Workload, Platform, and Metric Versions
 
 1. Version 1: `references/examples/introduction/version-1-task-then-application.md`

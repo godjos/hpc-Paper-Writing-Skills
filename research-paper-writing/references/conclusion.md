@@ -4,6 +4,8 @@
 
 Close the paper with clear takeaways and credible limitations.
 
+Use `references/hpc-terminology.md` for the final terminology pass. The conclusion should restate the same workload, bottleneck, metric, platform, and limitation terms used in the Abstract and Introduction.
+
 ## Structure
 
 1. Restate the workload/system problem and core technical idea.
@@ -11,6 +13,7 @@ Close the paper with clear takeaways and credible limitations.
 3. State practical impact or new insight.
 4. Add limitation paragraph.
 5. End with concrete future direction.
+6. Keep specialized terms and metric names consistent with the rest of the paper.
 
 ## Limitation Guidance
 

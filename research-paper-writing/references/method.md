@@ -8,6 +8,8 @@ Write the Method section clearly by following this sequence:
 2. Draw a pipeline figure sketch.
 3. Write the method section step by step.
 
+Before writing, use `references/hpc-terminology.md` to build a method terminology ledger. Module names, execution entities, data structures, runtime/library names, memory hierarchy terms, and communication terms must remain stable across text, equations, algorithms, and figures.
+
 ## Pre-Writing Questions
 
 `Before writing Method, first answer: (1) what modules exist in the method, and (2) for each module, what is the workflow, why this module is needed, and why this module works.`
@@ -22,6 +24,7 @@ Recommended organization:
 - Why does this module work?
 
 3. Organize answers as a mind map or a table for clarity.
+4. Add the canonical terms each module owns, such as `MPI rank`, `GPU kernel`, `halo exchange`, `shared memory`, `HBM`, `task queue`, or `collective`.
 
 ## Method Writing Steps
 

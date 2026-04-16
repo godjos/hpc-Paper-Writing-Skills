@@ -4,6 +4,8 @@
 
 Convince reviewers with complete evidence on performance, scalability, causality, and practical value.
 
+Before planning results, use `references/hpc-terminology.md` to lock metric names, units, platform terms, baseline names, and fairness controls. Do not report generic `performance` when the claim is about runtime, throughput, latency, memory bandwidth, I/O bandwidth, energy, strong scaling, weak scaling, or parallel efficiency.
+
 ## Three Core Questions
 
 1. Is the method better than strong baselines?
@@ -11,6 +13,7 @@ Convince reviewers with complete evidence on performance, scalability, causality
    - Report standard metrics on the main benchmark(s), plus runtime and scaling metrics.
    - Include the strongest public methods, not only weak baselines.
    - Keep protocol fair (same hardware budget, preprocessing, tuning budget, and evaluation settings).
+   - Keep baseline names, hardware names, library names, and metric units exactly consistent across text, figures, and tables.
 2. Which modules/design choices make the gain?
    - Run ablation studies for each key module/design choice.
    - Use remove/replace/disable variants and report delta to full model.

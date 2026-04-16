@@ -19,3 +19,4 @@ Use this folder for concrete writing patterns and locally organized cite targets
 2. Open the matching examples file.
 3. Reuse the sentence logic, not exact wording.
 4. Keep citation links in your notes for traceability.
+5. Apply `references/hpc-terminology.md` before adapting any example so the template does not erase HPC-specific terms.

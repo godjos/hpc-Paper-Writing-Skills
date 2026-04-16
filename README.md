@@ -23,6 +23,7 @@ Typical use cases:
 
 - Drafting or rewriting Abstract / Introduction / Related Work / Method / Experiments / Conclusion
 - Explaining system scope, hardware assumptions, and performance targets clearly
+- Preserving HPC-specific terminology through a workload/platform/metric terminology ledger
 - Checking claim-evidence alignment against scaling, profiling, and end-to-end results
 - Running pre-submission self-review from a reviewer mindset
 - Improving fair comparisons, reproducibility notes, and scalability narratives
