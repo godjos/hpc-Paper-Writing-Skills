@@ -39,6 +39,7 @@ Mark each item as `pass`, `needs revision`, `needs experiment`, or `remove claim
 | Reproducibility | Could a knowledgeable reader rerun the main results? | Hardware/software, build, launch, workloads, artifact |
 | Related work | Would reviewers accept the distinction from closest work? | Closest-work matrix and "why not X" answer |
 | Limitations | Are boundaries stated honestly? | Scope, failure cases, unsupported settings |
+| Terminology | Are paper-specific terms and abbreviations introduced before reuse? | Terminology ledger and abbreviation first-use scan |
 
 ## Common Rejection Dimensions
 
@@ -69,7 +70,8 @@ Mark each item as `pass`, `needs revision`, `needs experiment`, or `remove claim
 2. Did we provide enough technical detail for each key module?
 3. Is the motivation of every module tied to a named bottleneck?
 4. Are workload names, hardware names, metric names, and execution entities consistent?
-5. Does each paragraph carry one clear message with smooth transitions?
+5. Are abbreviations expanded at first use, rather than explained only after earlier unexplained uses?
+6. Does each paragraph carry one clear message with smooth transitions?
 
 ### 3. Experimental Strength
 

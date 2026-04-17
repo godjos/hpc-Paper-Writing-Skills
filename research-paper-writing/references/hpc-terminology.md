@@ -12,9 +12,21 @@ Before editing, extract a compact ledger from the user's draft or notes:
 4. Execution entity: node, socket, NUMA domain, core, hardware thread, process, MPI rank, OpenMP thread, GPU, SM/CU, warp/wavefront, stream, kernel, task, request, or I/O process.
 5. Memory and data movement: cache, DRAM, HBM, device global memory, unified memory, shared memory, register file, PCIe, NVLink, InfiniBand, RDMA, host-device transfer, GPU-GPU transfer, halo exchange, all-reduce, broadcast, gather, scatter, collective, checkpoint, or file-system I/O.
 6. Performance metric: runtime, latency, tail latency, throughput, makespan, speedup, strong scaling, weak scaling, parallel efficiency, FLOP/s, memory bandwidth, I/O bandwidth, communication volume, message count, energy, node-hours, or cost.
-7. System assumption: cluster size, node type, accelerator type, interconnect, compiler, runtime, library, dataset, problem size, precision, placement, affinity, batch size, warm-up, repetition count, or normalization policy.
+7. Abbreviation ledger: abbreviation, expansion, first abbreviation occurrence, first expansion occurrence, and whether the abbreviation is standard enough to leave unexplained in the target venue.
+8. System assumption: cluster size, node type, accelerator type, interconnect, compiler, runtime, library, dataset, problem size, precision, placement, affinity, batch size, warm-up, repetition count, or normalization policy.
 
 Keep the ledger visible while rewriting. Preserve canonical names, abbreviations, units, and capitalization unless the user asks for a naming change.
+
+## Abbreviation First-Use Scan
+
+Run this scan before rewriting and before final output.
+
+1. Scan the draft from beginning to end and list each non-obvious abbreviation, including paper-specific method names, modules, datasets, benchmarks, metrics, and system components.
+2. For each abbreviation, record the first abbreviation occurrence and the first expansion occurrence.
+3. Pass only when the expansion appears at the first abbreviation occurrence, for example `long form (ABBR)` or, when the abbreviation is the official name, `ABBR (long form)`.
+4. If an abbreviation appears before it is explained, revise the first occurrence to include the expansion and remove or simplify the late explanation.
+5. If the draft explains an abbreviation only at the final or later occurrence, treat that as a failed first-use check even if the explanation is technically correct.
+6. Do not over-expand universally familiar venue terms such as MPI, GPU, CPU, NUMA, RDMA, or CUDA unless the paper introduces a nonstandard meaning or the target audience needs the expansion.
 
 ## Rewrite Rules
 
@@ -59,7 +71,8 @@ Before final output, check:
 
 1. Are workload, platform, bottleneck, method modules, metrics, and baselines named consistently?
 2. Are all abbreviations expanded on first use when needed?
-3. Are terms tied to the correct system layer?
-4. Are numeric claims paired with units and experimental conditions?
-5. Are speedup, efficiency, bandwidth, throughput, and scalability claims distinguished?
-6. Are unsupported or unknown details explicitly marked instead of guessed?
+3. Are any abbreviations used before their expansion and explained only later?
+4. Are terms tied to the correct system layer?
+5. Are numeric claims paired with units and experimental conditions?
+6. Are speedup, efficiency, bandwidth, throughput, and scalability claims distinguished?
+7. Are unsupported or unknown details explicitly marked instead of guessed?
