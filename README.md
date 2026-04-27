@@ -22,6 +22,7 @@ This repository currently provides one skill package for HPC and system-style pa
 Typical use cases:
 
 - Drafting or rewriting Abstract / Introduction / Related Work / Method / Experiments / Conclusion
+- Polishing sentence-level flow so revised prose reads like an HPC/system paper rather than a generic technical summary
 - Explaining system scope, hardware assumptions, and performance targets clearly
 - Preserving HPC-specific terminology through a workload/platform/metric terminology ledger
 - Checking claim-evidence alignment against scaling, profiling, and end-to-end results
@@ -35,6 +36,7 @@ Key high-level references:
 
 - `research-paper-writing/references/paper-intake.md`: intake canvas and reviewer-risk forecast
 - `research-paper-writing/references/performance-evidence.md`: claim-evidence matching for performance claims
+- `research-paper-writing/references/hpc-prose-polish.md`: sentence-level flow, HPC/system prose polish, and per-paragraph `pass`/`revise` language rubric
 - `research-paper-writing/references/reproducibility-artifact.md`: hardware/software, build, launch, and artifact checklist
 - `research-paper-writing/references/venue-reviewer-profile.md`: venue-specific reviewer expectations
 - `research-paper-writing/references/figures-tables.md`: scaling, breakdown, roofline, timeline, and result-table guidance

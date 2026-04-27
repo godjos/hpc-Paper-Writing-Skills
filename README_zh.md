@@ -20,6 +20,7 @@
 常见使用场景：
 
 - 撰写或重写 Abstract / Introduction / Related Work / Method / Experiments / Conclusion
+- 润色句子级流畅度，让修改后的语言更像 HPC / system 论文，而不是泛泛的技术总结
 - 讲清楚系统范围、硬件假设和性能目标
 - 通过 workload/platform/metric 术语表保持 HPC 专用术语一致
 - 做 claim-evidence 对齐检查，尤其是与 scaling、profiling 和端到端结果对齐
@@ -33,6 +34,7 @@
 
 - `research-paper-writing/references/paper-intake.md`：开工前输入清单和 reviewer 风险预判
 - `research-paper-writing/references/performance-evidence.md`：性能 claim 与证据类型匹配
+- `research-paper-writing/references/hpc-prose-polish.md`：句子级流畅度、HPC / system 论文语言润色，以及逐段 `pass` / `revise` 语言 rubric
 - `research-paper-writing/references/reproducibility-artifact.md`：硬件/软件、构建、运行和 artifact 检查清单
 - `research-paper-writing/references/venue-reviewer-profile.md`：不同 venue 的 reviewer 关注点
 - `research-paper-writing/references/figures-tables.md`：扩展性图、breakdown、roofline、timeline 和结果表规范

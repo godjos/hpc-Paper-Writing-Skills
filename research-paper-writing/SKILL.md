@@ -18,8 +18,9 @@ Prioritize first-impression quality, scope clarity, logical flow, scalability ev
 5. Run an abbreviation first-use scan before rewriting and before final output: scan the draft from start to finish, record where each abbreviation first appears and where it is first expanded, and fix any case where the abbreviation appears before its explanation.
 6. Draft paragraph-by-paragraph, keeping one message per paragraph and preserving the terminology ledger.
 7. Run reverse outlining after each section to verify flow, structure, and term consistency.
-8. Check major Abstract/Introduction claims against end-to-end results, scaling, profiling, ablation, performance-model, and artifact evidence.
-9. Finish with an adversarial self-review using `references/paper-review.md`.
+8. Run the final language pass in `references/hpc-prose-polish.md`: improve sentence-level flow, replace vague academic phrasing with precise HPC/system terms, keep claims measured against the available evidence, and score every revised paragraph as `pass` or `revise` with the final language rubric.
+9. Check major Abstract/Introduction claims against end-to-end results, scaling, profiling, ablation, performance-model, and artifact evidence.
+10. Finish with an adversarial self-review using `references/paper-review.md`.
 
 ## Writing Principles
 
@@ -33,6 +34,7 @@ Prioritize first-impression quality, scope clarity, logical flow, scalability ev
 8. Treat visual quality as core content: use a clean system overview figure, pipeline figure, and, if useful, a profiling figure.
 9. Use readable, minimal-ink tables and keep formatting tidy and consistent.
 10. State performance units, platform assumptions, and experimental settings clearly enough that comparison conditions are readable.
+11. Run a prose polish pass that makes the text sound like a careful HPC/system paper, not a generic technical summary, and do not finalize unresolved `revise` paragraph verdicts unless required evidence or setup detail is missing.
 
 ## Paragraph Clarity Check
 
@@ -56,9 +58,9 @@ Source reference for this check:
 
 - `references/does-my-writing-flow-source.md`
 
-## Section Guides
+## Reference Guides
 
-Load only the needed section file:
+Load only the needed guide files:
 
 - Abstract: `references/abstract.md`
 - Introduction: `references/introduction.md`
@@ -68,6 +70,7 @@ Load only the needed section file:
 - Conclusion: `references/conclusion.md`
 - Paper review: `references/paper-review.md`
 - HPC terminology: `references/hpc-terminology.md`
+- HPC prose polish: `references/hpc-prose-polish.md`
 - Paper intake: `references/paper-intake.md`
 - Performance evidence: `references/performance-evidence.md`
 - Reproducibility and artifact: `references/reproducibility-artifact.md`
@@ -121,7 +124,7 @@ Use this final pass before submission or internal sign-off.
 8. Limitations: state what the system does not solve and where the evidence is incomplete.
 9. Reproducibility: check hardware/software versions, dataset or workload availability, seeds, parameters, and artifact references.
 10. Consistency: terminology, abbreviations, and contribution language should match across the whole draft; abbreviation expansions should appear at first use, not after earlier unexplained uses.
-11. Final polish: check grammar, citation completeness, formatting, and conference or journal submission constraints.
+11. Final polish: check grammar, sentence-level flow, HPC/system prose style, per-paragraph `pass`/`revise` verdicts, citation completeness, formatting, and conference or journal submission constraints.
 12. Reviewer risk: identify the closest-work, novelty, baseline-fairness, scaling, and artifact risks before final sign-off.
 
 ## Execution Rules
@@ -134,8 +137,9 @@ Use this final pass before submission or internal sign-off.
 6. Avoid writing style that looks like incremental patching of a naive baseline.
 7. Keep terminology stable across the full paper.
 8. If a claim cannot be supported by results, weaken or remove the claim.
-9. Before finalizing, append and answer a five-dimension self-review question list, then revise the paper based on unresolved items.
-10. Do not load all section references at once; load only `references/hpc-terminology.md` and the specific section guide needed for the current edit target.
+9. Before finalizing, run `references/hpc-prose-polish.md` and fix vague language, awkward sentence flow, overclaimed results, non-HPC phrasing, and any paragraph marked `revise`.
+10. Before finalizing, append and answer a five-dimension self-review question list, then revise the paper based on unresolved items.
+11. Do not load all section references at once; load only `references/hpc-terminology.md`, `references/hpc-prose-polish.md`, and the specific section guide needed for the current edit target.
 
 ## Output Contract
 
@@ -147,15 +151,18 @@ When asked to rewrite or draft sections, return:
 4. An abbreviation first-use note listing any abbreviation-order fixes, or `none` when all abbreviations are expanded at first use.
 5. A short self-review checklist covering clarity, flow, terminology consistency, unsupported claims, scaling evidence, and missing environment details.
 6. A claim-evidence map for each major claim in the revised text using `Claim: ... | Evidence: ... | Status: supported/needs evidence`.
-7. When relevant, add a compact note on platform assumptions and comparison conditions, avoiding repetitive comparison caveats when the experimental setup already makes them clear.
-8. A venue/reviewer-risk note when the target venue or paper type is known.
-9. An experiment adequacy note covering baseline fairness, scaling evidence, profiling/causality, and end-to-end evidence.
-10. A reproducibility gap note covering missing hardware/software, build, launch, workload, and artifact details.
-11. A closest-work risk note when the claim may overlap with prior systems, algorithms, runtimes, or benchmarks.
+7. A paragraph language rubric with one line per revised paragraph: `P# | role: ... | verdict: pass/revise | reason: ...`. Resolve every `revise` before final output unless missing user-provided evidence or setup details prevent a pass.
+8. A prose-polish note listing major language fixes, especially vague phrases replaced by precise HPC terms and any overclaimed wording weakened.
+9. When relevant, add a compact note on platform assumptions and comparison conditions, avoiding repetitive comparison caveats when the experimental setup already makes them clear.
+10. A venue/reviewer-risk note when the target venue or paper type is known.
+11. An experiment adequacy note covering baseline fairness, scaling evidence, profiling/causality, and end-to-end evidence.
+12. A reproducibility gap note covering missing hardware/software, build, launch, workload, and artifact details.
+13. A closest-work risk note when the claim may overlap with prior systems, algorithms, runtimes, or benchmarks.
 
 ## Safety and Fallbacks
 
-1. Load only `references/hpc-terminology.md` and the specific section guide needed for the current edit.
+1. Load only `references/hpc-terminology.md`, `references/hpc-prose-polish.md`, and the specific section guide needed for the current edit.
 2. If a claim is unsupported, weaken it or remove it.
 3. If flow remains weak, add temporary headers or transitions during revision, then remove unnecessary scaffolding before finalizing.
 4. Prefer concise, reviewer-facing prose over mechanical sentence patching.
+5. If the revised text still reads generic or non-HPC, or any paragraph receives `revise`, rerun `references/hpc-prose-polish.md` before final output.
