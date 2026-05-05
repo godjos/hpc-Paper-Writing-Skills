@@ -13,9 +13,18 @@
 当前仓库提供 1 个面向 HPC 和系统论文写作的技能包：
 
 - `research-paper-writing/`
-  - `SKILL.md`：HPC 论文的核心流程与使用规则
+  - `SKILL.md`：HPC 论文的模式路由、默认流程、输出契约与维护地图
   - `references/`：按章节拆分的写作指南、检查清单与模板
   - `agents/openai.yaml`：Agent 元信息
+
+`SKILL.md` 现在采用轻量入口设计：默认选择能完成任务的最小模式，而不是每次都执行完整投稿审查。详细写作规则、示例和检查清单放在 `references/` 中，便于后续单独修改。
+
+主要模式：
+
+- `Quick polish`：小段落润色、术语一致性和缩写首次展开检查
+- `Section rewrite`：章节级重写，包含术语表、mini-outline、段落角色和 claim-evidence map
+- `Evidence review`：实验、baseline、公平性、scaling、profiling、图表和 artifact 风险检查
+- `Submission review`：投稿前 reviewer 风险、复现性、closest-work 和完整行动清单
 
 常见使用场景：
 
@@ -38,6 +47,15 @@
 - `research-paper-writing/references/reproducibility-artifact.md`：硬件/软件、构建、运行和 artifact 检查清单
 - `research-paper-writing/references/venue-reviewer-profile.md`：不同 venue 的 reviewer 关注点
 - `research-paper-writing/references/figures-tables.md`：扩展性图、breakdown、roofline、timeline 和结果表规范
+
+## 后续维护建议
+
+- 想改默认行为：优先改 `research-paper-writing/SKILL.md` 里的 `Mode Selection`、`Default Workflow` 和 `Output Contracts`
+- 想改语言风格：改 `references/hpc-prose-polish.md`
+- 想改术语规则：改 `references/hpc-terminology.md`
+- 想改某个章节写法：改对应章节文件，例如 `references/introduction.md` 或 `references/method.md`
+- 想加示例：放到 `references/examples/`，并同步更新 `references/examples/index.md`
+- 尽量不要把同一条细节规则同时写在 `SKILL.md` 和 reference 文件里；`SKILL.md` 只保留路由、契约和不变量
 
 ## 安装方式
 

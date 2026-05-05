@@ -15,9 +15,18 @@
 This repository currently provides one skill package for HPC and system-style papers:
 
 - `research-paper-writing/`
-  - `SKILL.md`: core workflow and usage rules for HPC papers
+  - `SKILL.md`: mode routing, default workflow, output contracts, and maintainer map for HPC papers
   - `references/`: section-specific writing guides, checklists, and templates
   - `agents/openai.yaml`: agent metadata
+
+`SKILL.md` now uses a lightweight entry design: it chooses the smallest mode that satisfies the request instead of running a full submission review every time. Detailed writing rules, examples, and checklists live in `references/` so they can be edited independently.
+
+Main modes:
+
+- `Quick polish`: small-passage polish, terminology consistency, and abbreviation first-use checks
+- `Section rewrite`: section-level rewriting with terminology ledger, mini-outline, paragraph roles, and claim-evidence map
+- `Evidence review`: experiments, baselines, fairness, scaling, profiling, figures/tables, and artifact risks
+- `Submission review`: pre-submission reviewer risks, reproducibility, closest-work risks, and final action list
 
 Typical use cases:
 
@@ -40,6 +49,15 @@ Key high-level references:
 - `research-paper-writing/references/reproducibility-artifact.md`: hardware/software, build, launch, and artifact checklist
 - `research-paper-writing/references/venue-reviewer-profile.md`: venue-specific reviewer expectations
 - `research-paper-writing/references/figures-tables.md`: scaling, breakdown, roofline, timeline, and result-table guidance
+
+## Maintenance Notes
+
+- To change default behavior, edit `Mode Selection`, `Default Workflow`, and `Output Contracts` in `research-paper-writing/SKILL.md`
+- To change prose style, edit `references/hpc-prose-polish.md`
+- To change terminology rules, edit `references/hpc-terminology.md`
+- To change a section pattern, edit the matching section file such as `references/introduction.md` or `references/method.md`
+- To add examples, place them under `references/examples/` and update `references/examples/index.md`
+- Avoid duplicating the same detailed rule in both `SKILL.md` and a reference file; keep `SKILL.md` as router, contract, and invariant rules
 
 ## Installation
 
