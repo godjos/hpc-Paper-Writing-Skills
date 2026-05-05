@@ -1,4 +1,4 @@
 interface:
   display_name: "HPC Paper Writing"
   short_description: "HPC and system paper writing with lightweight polish, section rewrite, evidence review, and submission review modes"
-  default_prompt: "Use $research-paper-writing in the lightest suitable mode to improve my HPC paper's terminology, structure, scalability story, prose flow, and reviewer readiness."
+  default_prompt: "Use $research-paper-writing in the lightest suitable mode. For polish requests, preserve the draft's technical meaning, improve clarity and flow with minimal wording changes, and avoid adding unsupported HPC mechanisms, metrics, hardware details, or scalability claims."

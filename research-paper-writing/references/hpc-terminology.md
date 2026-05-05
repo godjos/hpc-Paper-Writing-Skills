@@ -1,10 +1,11 @@
 # HPC Terminology Guide
 
-Use this guide before rewriting or drafting HPC/system prose. The goal is not to add jargon; it is to keep domain terms precise, consistent, and reviewer-readable.
+Use this guide before rewriting or drafting HPC/system prose. The goal is not to add jargon; it is to keep domain terms precise, consistent, and reviewer-readable. Treat the terminology ledger as an evidence-locked record, not a menu of terms to add.
 
 ## Terminology Ledger
 
-Before editing, extract a compact ledger from the user's draft or notes:
+Before editing, extract a compact ledger from the user's draft or notes. For every ledger item,
+record its source as `source draft`, `user context`, or `unknown`.
 
 1. Workload and problem: simulation, stencil, sparse matrix/vector operations, graph analytics, N-body, CFD, molecular dynamics, checkpoint/restart, parallel I/O, scheduling, runtime service, distributed training, inference, or benchmark/miniapp.
 2. System layer: algorithm, runtime, compiler, programming model, library, architecture, memory hierarchy, network/interconnect, storage, scheduler, or application.
@@ -16,6 +17,10 @@ Before editing, extract a compact ledger from the user's draft or notes:
 8. System assumption: cluster size, node type, accelerator type, interconnect, compiler, runtime, library, dataset, problem size, precision, placement, affinity, batch size, warm-up, repetition count, or normalization policy.
 
 Keep the ledger visible while rewriting. Preserve canonical names, abbreviations, units, and capitalization unless the user asks for a naming change.
+
+Terms marked `unknown` must not appear as new or replacement terms in final polished prose.
+Mention them only in notes as `needs context`, for example `needs communication primitive`,
+`needs metric`, or `needs hardware detail`.
 
 ## Abbreviation First-Use Scan
 
@@ -32,11 +37,17 @@ Run this scan before rewriting and before final output.
 
 1. Define a specialized term before reuse, especially if it is paper-specific or overloaded.
 2. Keep one canonical name for each entity. Do not alternate between `process`, `rank`, `thread`, `task`, and `worker` unless they mean different things.
-3. Use the most precise layer of the system stack. Prefer `MPI rank`, `GPU kernel`, `NUMA domain`, `all-reduce`, or `host-device transfer` over vague words such as `unit`, `part`, `resource`, or `operation`.
+3. Use the most precise supported layer of the system stack. Prefer `MPI rank`, `GPU kernel`,
+   `NUMA domain`, `all-reduce`, or `host-device transfer` over vague words such as `unit`,
+   `part`, `resource`, or `operation` only when the draft or supplied context identifies that
+   layer.
 4. Preserve standard HPC metric names. Do not replace `strong scaling`, `weak scaling`, `parallel efficiency`, `communication volume`, or `end-to-end runtime` with generic phrases if the exact metric matters.
 5. Attach units and conditions to results: `ms`, `s`, `GB/s`, `GiB`, `TFLOP/s`, `nodes`, `GPUs`, `ranks per node`, `threads per rank`, problem size, precision, and backend.
 6. Distinguish mechanism from evidence. A mechanism can be `overlapping halo exchange with computation`; evidence can be `reduced communication stall time` or `higher parallel efficiency at 256 GPUs`.
-7. Do not invent missing environment details. Mark them as `needs evidence` or `needs setup detail`.
+7. Do not replace a generic term with a more specific term unless the draft has already identified
+   the more specific layer. For example, do not change `communication overhead` to `halo exchange
+   latency` or `all-reduce latency` unless the communication primitive is given.
+8. Do not invent missing environment details. Mark them as `needs evidence` or `needs setup detail`.
 
 ## System-Layer Precision
 
@@ -64,6 +75,8 @@ Use system-layer terms consistently:
 10. Using `distributed`, `parallel`, and `concurrent` interchangeably.
 11. Claiming `portable` when evidence only covers one architecture, compiler, or backend.
 12. Replacing established system names, library names, or algorithm names with paraphrases that make citations hard to follow.
+13. Inferring an HPC mechanism from a broad term, such as turning `communication cost` into
+    `RDMA transfer time`, `halo exchange`, or `all-reduce` without source evidence.
 
 ## Final Terminology Pass
 
@@ -76,3 +89,5 @@ Before final output, check:
 5. Are numeric claims paired with units and experimental conditions?
 6. Are speedup, efficiency, bandwidth, throughput, and scalability claims distinguished?
 7. Are unsupported or unknown details explicitly marked instead of guessed?
+8. Are all new or replacement terms backed by `source draft` or `user context` rather than
+   `unknown`?

@@ -1,6 +1,6 @@
 # HPC Prose Polish Guide
 
-Use this guide as the final language pass after structure, terminology, and evidence have been checked. The goal is reviewer-facing HPC prose: precise, fluent, concrete, and measured.
+Use this guide as the final language pass after structure, terminology, and evidence have been checked. The goal is reviewer-facing HPC prose: precise, fluent, concrete, and measured. For polish requests, preserve the draft's technical meaning and use the smallest wording change that makes the prose clearer.
 
 ## Polish Pass
 
@@ -8,12 +8,15 @@ For each revised paragraph, run this pass before final output:
 
 1. Identify the paragraph role: motivation, bottleneck, system model, method, mechanism, evidence, limitation, or transition.
 2. Check whether the first sentence states that role clearly.
-3. Replace vague academic phrasing with concrete HPC language.
+3. Replace vague academic phrasing with concrete HPC language only when the source draft or
+   supplied context supports the specific term.
 4. Keep the sentence subject stable when possible: workload, bottleneck, system, module, mechanism, metric, or evidence.
 5. Use cause, contrast, consequence, or refinement links between adjacent sentences.
 6. Remove filler that does not change the technical claim.
 7. Check that every performance statement names the metric, unit, scale, and condition when available.
 8. Keep claims measured. Do not use stronger wording than the evidence supports.
+9. Do not make prose more abstract: prefer short subjects, concrete actions, and verifiable
+   objects over high-level nouns or broad claims.
 
 ## HPC Style Targets
 
@@ -26,18 +29,24 @@ Prefer prose that sounds like a systems/HPC paper:
 5. Explain result conditions before generalizing: workload, problem size, node/GPU count, baseline, backend, and precision.
 6. Use restrained verbs such as `reduces`, `improves`, `overlaps`, `amortizes`, `bounds`, `exposes`, `preserves`, `scales`, and `degrades`.
 7. Avoid marketing verbs such as `revolutionizes`, `greatly enhances`, `dramatically boosts`, or `fully solves` unless the evidence is unusually strong.
+8. Avoid ornamental academic words such as `leverage`, `facilitate`, `paradigm`, `robust`,
+   `seamless`, `substantial`, `significant`, `intricate`, `pivotal`, `underscore`,
+   `holistic`, and `sophisticated` unless the draft already uses them or the context strongly
+   supports them. Prefer direct verbs such as `use`, `enable`, `show`, `reduce`, `increase`,
+   `explain`, or `support`.
 
 ## Common Non-HPC Phrasing to Fix
 
-Replace vague phrasing with technical phrasing:
+Replace vague phrasing with technical phrasing only when the draft or supplied context supports the
+more specific term. Otherwise keep a conservative phrase and note the missing context.
 
-1. `improves performance` -> name the metric, such as `reduces end-to-end runtime` or `improves weak-scaling efficiency`.
-2. `uses resources efficiently` -> name the resource, such as `reduces HBM traffic`, `improves SM occupancy`, or `reduces MPI message count`.
-3. `handles large-scale data` -> name the scale, data structure, and movement path.
-4. `communication overhead` -> name the source, such as `halo exchange`, `all-reduce latency`, `RDMA transfer time`, or `metadata operations`.
-5. `our method is scalable` -> name strong scaling, weak scaling, throughput scaling, or parallel efficiency, and state the evaluated scale.
+1. `improves performance` -> name the metric, such as `reduces end-to-end runtime` or `improves weak-scaling efficiency`, only when the metric is provided; otherwise use `improves measured performance` and mark `needs metric`.
+2. `uses resources efficiently` -> name the resource, such as `reduces HBM traffic`, `improves SM occupancy`, or `reduces MPI message count`, only when that resource is identified; otherwise keep `resource use` or mark `needs resource`.
+3. `handles large-scale data` -> name the scale, data structure, and movement path only when they are provided; otherwise keep the scale claim conservative.
+4. `communication overhead` -> name the source, such as `halo exchange`, `all-reduce latency`, `RDMA transfer time`, or `metadata operations`, only when the communication primitive or path is identified; otherwise keep `communication cost` and mark `needs communication primitive`.
+5. `our method is scalable` -> name strong scaling, weak scaling, throughput scaling, or parallel efficiency only when the scaling type and evaluated scale are provided.
 6. `significant improvement` -> report the measured improvement and condition, or weaken to `improvement` when evidence is incomplete.
-7. `advanced optimization` -> name the mechanism, such as tiling, fusion, overlap, aggregation, prefetching, placement, or scheduling.
+7. `advanced optimization` -> name the mechanism, such as tiling, fusion, overlap, aggregation, prefetching, placement, or scheduling, only when the mechanism appears in the draft or supplied context.
 
 ## Sentence-Level Flow
 
@@ -61,6 +70,7 @@ Before final output, confirm:
 4. Claims are not inflated beyond the evidence.
 5. Sentences are varied but not ornamental.
 6. The text reads like a careful HPC/system paper, not a general technical blog post.
+7. Any withheld specificity is noted, for example `kept "communication cost" because the draft does not identify the communication primitive`.
 
 ## Final Language Rubric
 
@@ -78,7 +88,7 @@ A paragraph can receive `pass` only if all of the following are true:
 2. The paragraph has one main message.
 3. Adjacent sentences are connected by cause, contrast, consequence, refinement, or evidence.
 4. Specialized HPC terms match the terminology ledger and the correct system layer.
-5. Generic words are replaced where precise HPC terms are available.
+5. Generic words are replaced only where precise HPC terms are available from the source draft or supplied context.
 6. Performance claims include metric, unit, scale, and condition when the source draft provides them.
 7. Claims are measured and do not exceed the available evidence.
 8. The paragraph reads fluently without awkward phrase stacking.

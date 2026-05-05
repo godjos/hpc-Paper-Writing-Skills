@@ -16,7 +16,7 @@ Choose the lightest mode that satisfies the user request.
 
 | Mode | Use when | Default references | Default output |
 | --- | --- | --- | --- |
-| Quick polish | The user asks to polish, smooth, shorten, or improve wording for a paragraph or small passage. | `hpc-terminology.md`, `hpc-prose-polish.md` | Revised text plus compact notes on terminology, abbreviation order, and weakened overclaims. |
+| Quick polish | The user asks to polish, smooth, shorten, or improve wording for a paragraph or small passage. Use conservative polish by default: improve clarity, grammar, and flow while preserving the original technical meaning. | `hpc-terminology.md`, `hpc-prose-polish.md` | Revised text plus compact notes on terminology, abbreviation order, weakened overclaims, and any specificity withheld because the draft lacks evidence. |
 | Section rewrite | The user asks to draft or rewrite Abstract, Introduction, Related Work, Method, Experiments, or Conclusion. | `hpc-terminology.md`, section guide, `hpc-prose-polish.md` | Terminology ledger, mini-outline, revised paragraphs with roles, abbreviation note, and claim-evidence map. |
 | Evidence review | The user asks whether experiments, results, claims, figures, baselines, scaling, or artifacts are convincing. | `performance-evidence.md`, `experiments.md`, `figures-tables.md`, `reproducibility-artifact.md` | Reviewer risks, unsupported claims, missing evidence, and concrete revision actions. |
 | Submission review | The user asks for pre-submission, reviewer, venue, or full-paper review. | `paper-review.md`, `venue-reviewer-profile.md`, `performance-evidence.md`, `reproducibility-artifact.md` | Prioritized rejection risks, claim-evidence gaps, reproducibility gaps, closest-work risks, and final action list. |
@@ -29,6 +29,7 @@ review for a small wording request.
 1. Identify the target section, task mode, paper type, venue if known, and available evidence.
 2. Build only the terminology needed for the current task: workload, platform, parallel model,
    execution entities, metrics, baselines, units, abbreviations, and environment assumptions.
+   For polish requests, use only terms supported by the source draft or supplied user context.
 3. Load only the references required by the selected mode. Do not load every guide or example.
 4. Draft or review paragraph-by-paragraph. Keep one message per paragraph and preserve the
    terminology ledger.
@@ -70,7 +71,8 @@ not exact wording.
 3. Define workload names, hardware terms, runtime terms, and non-obvious abbreviations before reuse.
 4. Use precise HPC/system terms at the correct layer: node, socket, NUMA domain, core, process,
    rank, thread, task, GPU, SM, warp, kernel, cache, DRAM, HBM, PCIe, NVLink, InfiniBand,
-   RDMA, collective, halo exchange, I/O, strong scaling, and weak scaling.
+   RDMA, collective, halo exchange, I/O, strong scaling, and weak scaling, but only when the
+   draft or supplied context supports that layer and term.
 5. Preserve canonical names, abbreviations, capitalization, and units from the user's draft unless
    a naming change is requested.
 6. Connect sentences through cause, contrast, consequence, refinement, or example.
@@ -88,7 +90,12 @@ Return:
 
 1. Revised text.
 2. Abbreviation first-use note, or `none`.
-3. Terminology/prose notes, limited to changes that affect correctness or reviewer perception.
+3. Terminology/prose notes, limited to changes that affect correctness or reviewer perception,
+   including why any more-specific term was preserved, weakened, or not introduced.
+
+Quick Polish must not add or replace workload, platform, parallel model, bottleneck, metric,
+baseline, hardware, communication pattern, memory hierarchy, system layer, or mechanism details
+unless they are present in the user's draft or explicitly supplied context.
 
 ### Section Rewrite
 
@@ -144,7 +151,9 @@ details make that impossible.
 3. If flow remains weak, use temporary section headers or transition phrases during revision, then
    remove unnecessary scaffolding from the final prose.
 4. If the text still reads generic or non-HPC, rerun `references/hpc-prose-polish.md`.
-5. Do not invent results, baselines, venues, hardware details, artifact status, or citations.
+5. Do not invent results, baselines, venues, hardware details, artifact status, citations,
+   bottlenecks, mechanisms, system layers, metric types, workload semantics, communication
+   patterns, or memory-hierarchy details.
 
 ## Maintainer Map
 
