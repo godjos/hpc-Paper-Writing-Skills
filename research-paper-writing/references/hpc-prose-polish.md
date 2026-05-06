@@ -17,6 +17,21 @@ For each revised paragraph, run this pass before final output:
 8. Keep claims measured. Do not use stronger wording than the evidence supports.
 9. Do not make prose more abstract: prefer short subjects, concrete actions, and verifiable
    objects over high-level nouns or broad claims.
+10. For non-native English drafts, fix grammar, articles, prepositions, tense, agreement, and
+    awkward phrase order without changing the technical claim or adding new evidence.
+
+## LaTeX and Citation Safety
+
+When polishing LaTeX manuscript text:
+
+1. Preserve LaTeX commands, macro names, labels, citation keys, reference keys, equation content,
+   table and figure numbers, paths, code identifiers, and inline math.
+2. Do not rewrite text inside `\cite{...}`, `\ref{...}`, `\label{...}`, `\autoref{...}`,
+   `\cref{...}`, math delimiters, or code-like snippets unless the user explicitly asks.
+3. Keep placeholders, comments, TODO markers, and reviewer annotations visible unless asked to
+   remove them.
+4. Polish the natural-language sentence around protected syntax so the output remains compilable
+   and ready to paste back into a manuscript.
 
 ## HPC Style Targets
 
@@ -71,6 +86,19 @@ Before final output, confirm:
 5. Sentences are varied but not ornamental.
 6. The text reads like a careful HPC/system paper, not a general technical blog post.
 7. Any withheld specificity is noted, for example `kept "communication cost" because the draft does not identify the communication primitive`.
+8. LaTeX, citations, references, equations, macros, labels, and code-like identifiers are preserved.
+9. Grammar and fluency changes help readability rather than creating pedantic churn.
+
+## Change Justification
+
+When returning polished text, explain only significant changes:
+
+1. Mention grammar or fluency fixes that materially improve readability.
+2. Mention terminology changes that affect correctness or reviewer perception.
+3. Mention overclaims that were weakened because evidence is missing.
+4. Mention LaTeX or citation syntax that was intentionally preserved.
+5. If the draft is already clear and correct, return the original text and state
+   `No meaningful change needed` rather than making cosmetic edits.
 
 ## Final Language Rubric
 
@@ -91,7 +119,8 @@ A paragraph can receive `pass` only if all of the following are true:
 5. Generic words are replaced only where precise HPC terms are available from the source draft or supplied context.
 6. Performance claims include metric, unit, scale, and condition when the source draft provides them.
 7. Claims are measured and do not exceed the available evidence.
-8. The paragraph reads fluently without awkward phrase stacking.
+8. LaTeX, citations, references, equations, macros, labels, and code-like identifiers are preserved.
+9. The paragraph reads fluently without awkward phrase stacking.
 
 Mark the paragraph as `revise` if any condition fails. For every `revise`, either fix the paragraph before final output or explicitly state the missing input that prevents a pass, such as `needs scale`, `needs baseline`, `needs hardware detail`, or `needs evidence`.
 

@@ -1,6 +1,6 @@
 ---
 name: research-paper-writing
-description: Improve HPC and systems paper writing with terminology-aware prose, section structure, claim-evidence alignment, scalability logic, reproducibility notes, and reviewer-facing presentation. Use when drafting, rewriting, polishing, or reviewing Abstract, Introduction, Related Work, Method, Experiments, Conclusion, figures/tables, performance claims, or submission readiness.
+description: Improve, revise, edit, polish, or review HPC and systems papers with terminology-aware prose, section structure, claim-evidence alignment, scalability logic, reproducibility notes, reviewer comments, LaTeX text, and non-native English support. Use for Abstract, Introduction, Related Work, Method, Experiments, Conclusion, figures/tables, performance claims, revision passes, or submission readiness.
 ---
 # HPC Paper Writing
 
@@ -16,7 +16,8 @@ Choose the lightest mode that satisfies the user request.
 
 | Mode | Use when | Default references | Default output |
 | --- | --- | --- | --- |
-| Quick polish | The user asks to polish, smooth, shorten, or improve wording for a paragraph or small passage. Use conservative polish by default: improve clarity, grammar, and flow while preserving the original technical meaning. | `hpc-terminology.md`, `hpc-prose-polish.md` | Revised text plus compact notes on terminology, abbreviation order, weakened overclaims, and any specificity withheld because the draft lacks evidence. |
+| Quick polish | The user asks to polish only, smooth, shorten, grammar-check, or improve wording for a paragraph or small passage. Use conservative polish by default: improve clarity, grammar, and flow while preserving the original technical meaning. | `hpc-terminology.md`, `hpc-prose-polish.md` | Revised text plus important changes, abbreviation/terminology note, and any specificity withheld because the draft lacks evidence. |
+| Revision pass | The user asks to revise, edit, improve this section, respond to reviewer comments, or modify an existing section beyond sentence-level polish. Diagnose structure and evidence before rewriting; do not treat revision as grammar-only polish. | `paper-revision-polish.md`, `hpc-terminology.md`, `hpc-prose-polish.md`, section guide when relevant | Diagnosis, compact revision plan, revised text, claim/evidence risks, and remaining missing inputs. |
 | Section rewrite | The user asks to draft or rewrite Abstract, Introduction, Related Work, Method, Experiments, or Conclusion. | `hpc-terminology.md`, section guide, `hpc-prose-polish.md` | Terminology ledger, mini-outline, revised paragraphs with roles, abbreviation note, and claim-evidence map. |
 | Evidence review | The user asks whether experiments, results, claims, figures, baselines, scaling, or artifacts are convincing. | `performance-evidence.md`, `experiments.md`, `figures-tables.md`, `reproducibility-artifact.md` | Reviewer risks, unsupported claims, missing evidence, and concrete revision actions. |
 | Submission review | The user asks for pre-submission, reviewer, venue, or full-paper review. | `paper-review.md`, `venue-reviewer-profile.md`, `performance-evidence.md`, `reproducibility-artifact.md` | Prioritized rejection risks, claim-evidence gaps, reproducibility gaps, closest-work risks, and final action list. |
@@ -31,13 +32,15 @@ review for a small wording request.
    execution entities, metrics, baselines, units, abbreviations, and environment assumptions.
    For polish requests, use only terms supported by the source draft or supplied user context.
 3. Load only the references required by the selected mode. Do not load every guide or example.
-4. Draft or review paragraph-by-paragraph. Keep one message per paragraph and preserve the
+4. For revision requests, run a reverse-outline pass before rewriting: main claim, paragraph
+   role, topic sentence, supporting evidence, flow gap, and unsupported overclaim.
+5. Draft or review paragraph-by-paragraph. Keep one message per paragraph and preserve the
    terminology ledger.
-5. Check abbreviation order before final output: each abbreviation must be expanded at first use
+6. Check abbreviation order before final output: each abbreviation must be expanded at first use
    unless it is universally standard in context.
-6. Check major claims against available evidence. Weaken or remove unsupported claims.
-7. Run the prose polish pass when producing final prose.
-8. For full-paper or submission work, finish with adversarial self-review.
+7. Check major claims against available evidence. Weaken or remove unsupported claims.
+8. Run the prose polish pass when producing final prose.
+9. For full-paper or submission work, finish with adversarial self-review.
 
 ## Reference Router
 
@@ -55,6 +58,7 @@ Load these files only when the task calls for them:
 - Reproducibility and artifact: `references/reproducibility-artifact.md`
 - Venue and reviewer profile: `references/venue-reviewer-profile.md`
 - Paper review: `references/paper-review.md`
+- Paper revision and polish: `references/paper-revision-polish.md`
 - HPC terminology: `references/hpc-terminology.md`
 - HPC prose polish: `references/hpc-prose-polish.md`
 - Paragraph flow source: `references/does-my-writing-flow-source.md`
@@ -89,13 +93,30 @@ not exact wording.
 Return:
 
 1. Revised text.
-2. Abbreviation first-use note, or `none`.
-3. Terminology/prose notes, limited to changes that affect correctness or reviewer perception,
-   including why any more-specific term was preserved, weakened, or not introduced.
+2. Important changes, limited to changes that affect clarity, correctness, fluency, LaTeX safety,
+   or reviewer perception.
+3. Abbreviation/terminology note, or `none`.
+4. Withheld specificity note explaining any more-specific term that was preserved, weakened, or not
+   introduced because the draft lacks evidence or setup detail.
 
 Quick Polish must not add or replace workload, platform, parallel model, bottleneck, metric,
 baseline, hardware, communication pattern, memory hierarchy, system layer, or mechanism details
 unless they are present in the user's draft or explicitly supplied context.
+
+### Revision Pass
+
+Return:
+
+1. Diagnosis covering the section's main claim, paragraph roles, topic-sentence alignment,
+   supporting evidence, flow gaps, and unsupported overclaims.
+2. Compact revision plan with the smallest structural and language changes needed.
+3. Revised text.
+4. Claim/evidence risks using `Claim: ... | Evidence: ... | Risk: ...`.
+5. Remaining missing inputs, or `none`.
+
+Revision Pass must revise structure, evidence alignment, and prose in that order. It may reorganize
+or combine paragraphs, but it must not invent results, citations, reviewer intent, hardware details,
+or experimental conditions.
 
 ### Section Rewrite
 
@@ -135,6 +156,7 @@ Return:
 Include these only when requested or clearly necessary:
 
 - Paragraph language rubric: `P# | role: ... | verdict: pass/revise | reason: ...`
+- Change justification for significant polish or revision decisions.
 - Venue/reviewer-risk note.
 - Full five-dimension self-review: contribution, writing clarity, experimental strength,
   evaluation completeness, and method design soundness.
@@ -161,6 +183,7 @@ Use this map when updating the skill later:
 
 - Change default behavior in `Mode Selection`, `Default Workflow`, and `Output Contracts`.
 - Change language style in `references/hpc-prose-polish.md`; keep only the trigger rule here.
+- Change revision workflow in `references/paper-revision-polish.md`.
 - Change terminology policy in `references/hpc-terminology.md`; keep only the short rule list here.
 - Change section structure in the matching section guide under `references/`.
 - Change experiment/reviewer standards in `performance-evidence.md`, `paper-review.md`,

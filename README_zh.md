@@ -21,7 +21,8 @@
 
 主要模式：
 
-- `Quick polish`：小段落润色、术语一致性和缩写首次展开检查
+- `Quick polish`：保守小段落润色，处理语法、流畅度、术语一致性、LaTeX 安全和缩写首次展开检查
+- `Revision pass`：面向已有文本的章节级修改，先做 reverse outline、段落角色、claim/evidence 风险、衔接问题和 reviewer-facing 修改，再做最终润色
 - `Section rewrite`：章节级重写，包含术语表、mini-outline、段落角色和 claim-evidence map
 - `Evidence review`：实验、baseline、公平性、scaling、profiling、图表和 artifact 风险检查
 - `Submission review`：投稿前 reviewer 风险、复现性、closest-work 和完整行动清单
@@ -29,7 +30,10 @@
 常见使用场景：
 
 - 撰写或重写 Abstract / Introduction / Related Work / Method / Experiments / Conclusion
-- 润色句子级流畅度，让修改后的语言更像 HPC / system 论文，而不是泛泛的技术总结
+- 润色句子级流畅度，让修改后的语言更像 HPC / system 论文，而不是泛泛的技术总结，同时不编造缺失的技术细节
+- 对已有章节先诊断再修改：main claim、topic sentence、supporting evidence、flow gap、unsupported overclaim 和最终润色文本
+- 润色 LaTeX 文本时保护命令、引用、交叉引用、标签、公式、宏和类似代码的标识符
+- 改善非英语母语写作者的语法和流畅度，同时保留作者原本的技术含义
 - 讲清楚系统范围、硬件假设和性能目标
 - 通过 workload/platform/metric 术语表保持 HPC 专用术语一致
 - 做 claim-evidence 对齐检查，尤其是与 scaling、profiling 和端到端结果对齐
@@ -42,6 +46,7 @@
 关键高级参考文件：
 
 - `research-paper-writing/references/paper-intake.md`：开工前输入清单和 reviewer 风险预判
+- `research-paper-writing/references/paper-revision-polish.md`：通过 reverse outline、claim/evidence 诊断、审稿意见修改和保守最终润色来指导 revision 工作流
 - `research-paper-writing/references/performance-evidence.md`：性能 claim 与证据类型匹配
 - `research-paper-writing/references/hpc-prose-polish.md`：句子级流畅度、HPC / system 论文语言润色，以及逐段 `pass` / `revise` 语言 rubric
 - `research-paper-writing/references/reproducibility-artifact.md`：硬件/软件、构建、运行和 artifact 检查清单
@@ -51,6 +56,7 @@
 ## 后续维护建议
 
 - 想改默认行为：优先改 `research-paper-writing/SKILL.md` 里的 `Mode Selection`、`Default Workflow` 和 `Output Contracts`
+- 想改 revision 工作流：改 `references/paper-revision-polish.md`
 - 想改语言风格：改 `references/hpc-prose-polish.md`
 - 想改术语规则：改 `references/hpc-terminology.md`
 - 想改某个章节写法：改对应章节文件，例如 `references/introduction.md` 或 `references/method.md`
@@ -98,6 +104,14 @@ cp -R research-paper-writing "$CODEX_HOME/skills/"
 
 ```text
 Use $research-paper-writing to improve my HPC paper's Introduction.
+```
+
+其他常用提示词：
+
+```text
+Use $research-paper-writing to polish only this LaTeX paragraph.
+Use $research-paper-writing to revise this Introduction section with diagnosis before rewriting.
+Use $research-paper-writing to edit this response to reviewer comment and update the manuscript text.
 ```
 
 ### 2) CC（Claude Code）

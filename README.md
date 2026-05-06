@@ -23,7 +23,8 @@ This repository currently provides one skill package for HPC and system-style pa
 
 Main modes:
 
-- `Quick polish`: small-passage polish, terminology consistency, and abbreviation first-use checks
+- `Quick polish`: conservative small-passage polish for grammar, fluency, terminology consistency, LaTeX safety, and abbreviation first-use checks
+- `Revision pass`: section-level revision for existing text, with reverse outline, paragraph roles, claim/evidence risks, flow gaps, and reviewer-facing edits before final polish
 - `Section rewrite`: section-level rewriting with terminology ledger, mini-outline, paragraph roles, and claim-evidence map
 - `Evidence review`: experiments, baselines, fairness, scaling, profiling, figures/tables, and artifact risks
 - `Submission review`: pre-submission reviewer risks, reproducibility, closest-work risks, and final action list
@@ -31,7 +32,10 @@ Main modes:
 Typical use cases:
 
 - Drafting or rewriting Abstract / Introduction / Related Work / Method / Experiments / Conclusion
-- Polishing sentence-level flow so revised prose reads like an HPC/system paper rather than a generic technical summary
+- Polishing sentence-level flow so revised prose reads like an HPC/system paper rather than a generic technical summary, without inventing missing technical detail
+- Revising an existing section with diagnosis first: main claim, topic sentences, supporting evidence, flow gaps, unsupported overclaims, and final polished text
+- Protecting LaTeX commands, citations, references, labels, equations, macros, and code-like identifiers during polish
+- Improving non-native English grammar and fluency while preserving the author's technical meaning
 - Explaining system scope, hardware assumptions, and performance targets clearly
 - Preserving HPC-specific terminology through a workload/platform/metric terminology ledger
 - Checking claim-evidence alignment against scaling, profiling, and end-to-end results
@@ -44,6 +48,7 @@ Typical use cases:
 Key high-level references:
 
 - `research-paper-writing/references/paper-intake.md`: intake canvas and reviewer-risk forecast
+- `research-paper-writing/references/paper-revision-polish.md`: revision workflow for reverse outlining, claim/evidence diagnosis, reviewer-comment edits, and conservative final polish
 - `research-paper-writing/references/performance-evidence.md`: claim-evidence matching for performance claims
 - `research-paper-writing/references/hpc-prose-polish.md`: sentence-level flow, HPC/system prose polish, and per-paragraph `pass`/`revise` language rubric
 - `research-paper-writing/references/reproducibility-artifact.md`: hardware/software, build, launch, and artifact checklist
@@ -53,6 +58,7 @@ Key high-level references:
 ## Maintenance Notes
 
 - To change default behavior, edit `Mode Selection`, `Default Workflow`, and `Output Contracts` in `research-paper-writing/SKILL.md`
+- To change the revision workflow, edit `references/paper-revision-polish.md`
 - To change prose style, edit `references/hpc-prose-polish.md`
 - To change terminology rules, edit `references/hpc-terminology.md`
 - To change a section pattern, edit the matching section file such as `references/introduction.md` or `references/method.md`
@@ -100,6 +106,14 @@ Usage example:
 
 ```text
 Use $research-paper-writing to improve my HPC paper's Introduction.
+```
+
+Other useful prompts:
+
+```text
+Use $research-paper-writing to polish only this LaTeX paragraph.
+Use $research-paper-writing to revise this Introduction section with diagnosis before rewriting.
+Use $research-paper-writing to edit this response to reviewer comment and update the manuscript text.
 ```
 
 ### 2) CC (Claude Code)
