@@ -47,6 +47,8 @@
 
 - `research-paper-writing/references/paper-intake.md`：开工前输入清单和 reviewer 风险预判
 - `research-paper-writing/references/paper-revision-polish.md`：通过 reverse outline、claim/evidence 诊断、审稿意见修改和保守最终润色来指导 revision 工作流
+- `research-paper-writing/references/style-calibration.md`：基于作者样稿、venue 风格和目标语气提炼风格锚点，避免改写成泛化 AI 学术腔
+- `research-paper-writing/references/final-self-check.md`：终稿 gate，检查硬性安全、HPC 风格一致性、claim/evidence 完整性、AI 模板味和 reviewer-readiness
 - `research-paper-writing/references/performance-evidence.md`：性能 claim 与证据类型匹配
 - `research-paper-writing/references/hpc-prose-polish.md`：句子级流畅度、HPC / system 论文语言润色，以及逐段 `pass` / `revise` 语言 rubric
 - `research-paper-writing/references/reproducibility-artifact.md`：硬件/软件、构建、运行和 artifact 检查清单
@@ -57,6 +59,8 @@
 
 - 想改默认行为：优先改 `research-paper-writing/SKILL.md` 里的 `Mode Selection`、`Default Workflow` 和 `Output Contracts`
 - 想改 revision 工作流：改 `references/paper-revision-polish.md`
+- 想改风格校准规则：改 `references/style-calibration.md`
+- 想改终稿自检 gate：改 `references/final-self-check.md`
 - 想改语言风格：改 `references/hpc-prose-polish.md`
 - 想改术语规则：改 `references/hpc-terminology.md`
 - 想改某个章节写法：改对应章节文件，例如 `references/introduction.md` 或 `references/method.md`

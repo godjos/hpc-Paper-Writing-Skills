@@ -17,10 +17,10 @@ Choose the lightest mode that satisfies the user request.
 | Mode | Use when | Default references | Default output |
 | --- | --- | --- | --- |
 | Quick polish | The user asks to polish only, smooth, shorten, grammar-check, or improve wording for a paragraph or small passage. Use conservative polish by default: improve clarity, grammar, and flow while preserving the original technical meaning. | `hpc-terminology.md`, `hpc-prose-polish.md` | Revised text plus important changes, abbreviation/terminology note, and any specificity withheld because the draft lacks evidence. |
-| Revision pass | The user asks to revise, edit, improve this section, respond to reviewer comments, or modify an existing section beyond sentence-level polish. Diagnose structure and evidence before rewriting; do not treat revision as grammar-only polish. | `paper-revision-polish.md`, `hpc-terminology.md`, `hpc-prose-polish.md`, section guide when relevant | Diagnosis, compact revision plan, revised text, claim/evidence risks, and remaining missing inputs. |
-| Section rewrite | The user asks to draft or rewrite Abstract, Introduction, Related Work, Method, Experiments, or Conclusion. | `hpc-terminology.md`, section guide, `hpc-prose-polish.md` | Terminology ledger, mini-outline, revised paragraphs with roles, abbreviation note, and claim-evidence map. |
+| Revision pass | The user asks to revise, edit, improve this section, respond to reviewer comments, or modify an existing section beyond sentence-level polish. Diagnose structure and evidence before rewriting; do not treat revision as grammar-only polish. | `paper-revision-polish.md`, `style-calibration.md`, `hpc-terminology.md`, `hpc-prose-polish.md`, section guide when relevant | Diagnosis, compact revision plan, revised text, claim/evidence risks, and remaining missing inputs. |
+| Section rewrite | The user asks to draft or rewrite Abstract, Introduction, Related Work, Method, Experiments, or Conclusion. | `style-calibration.md`, `hpc-terminology.md`, section guide, `hpc-prose-polish.md`, `final-self-check.md` when producing final prose | Terminology ledger, mini-outline, revised paragraphs with roles, abbreviation note, and claim-evidence map. |
 | Evidence review | The user asks whether experiments, results, claims, figures, baselines, scaling, or artifacts are convincing. | `performance-evidence.md`, `experiments.md`, `figures-tables.md`, `reproducibility-artifact.md` | Reviewer risks, unsupported claims, missing evidence, and concrete revision actions. |
-| Submission review | The user asks for pre-submission, reviewer, venue, or full-paper review. | `paper-review.md`, `venue-reviewer-profile.md`, `performance-evidence.md`, `reproducibility-artifact.md` | Prioritized rejection risks, claim-evidence gaps, reproducibility gaps, closest-work risks, and final action list. |
+| Submission review | The user asks for pre-submission, reviewer, venue, or full-paper review. | `paper-review.md`, `venue-reviewer-profile.md`, `performance-evidence.md`, `reproducibility-artifact.md`, `style-calibration.md`, `final-self-check.md` | Prioritized rejection risks, claim-evidence gaps, reproducibility gaps, closest-work risks, and final action list. |
 
 If the user does not specify a mode, infer it from the task. Do not run the full submission
 review for a small wording request.
@@ -42,6 +42,28 @@ review for a small wording request.
 8. Run the prose polish pass when producing final prose.
 9. For full-paper or submission work, finish with adversarial self-review.
 
+## Structured Gates
+
+Use these gates only for modes that need them; do not upgrade Quick polish into a full revision
+or submission workflow.
+
+1. Intent and evidence confirmation: identify the target section, intended reader takeaway,
+   supplied evidence, venue or reviewer constraints, and missing inputs.
+2. Structure diagnosis: run the reverse outline or section outline before rewriting.
+3. Style calibration: use `style-calibration.md` when user samples, venue norms, or prior draft
+   tone should guide the rewrite.
+4. Rewrite or review: make the smallest changes that fix structure, evidence, terminology, and
+   prose in that order.
+5. Independent review: when a reviewer or verifier subagent is available and the task is a
+   substantial revision, rewrite, or submission review, use it for a separate AI-pattern, logic,
+   evidence, and reviewer-risk pass. If no subagent is available, run the same pass yourself and
+   label it as self-review.
+6. Fact and claim verification: trace every performance, novelty, scalability, artifact, baseline,
+   and reviewer-response claim to supplied text, results, citations, or an explicit missing-input
+   note.
+7. Final self-check: use `final-self-check.md` for final prose, full-paper review, or any answer
+   that claims submission readiness.
+
 ## Reference Router
 
 Load these files only when the task calls for them:
@@ -59,6 +81,8 @@ Load these files only when the task calls for them:
 - Venue and reviewer profile: `references/venue-reviewer-profile.md`
 - Paper review: `references/paper-review.md`
 - Paper revision and polish: `references/paper-revision-polish.md`
+- Style calibration: `references/style-calibration.md`
+- Final self-check: `references/final-self-check.md`
 - HPC terminology: `references/hpc-terminology.md`
 - HPC prose polish: `references/hpc-prose-polish.md`
 - Paragraph flow source: `references/does-my-writing-flow-source.md`
@@ -108,11 +132,13 @@ unless they are present in the user's draft or explicitly supplied context.
 Return:
 
 1. Diagnosis covering the section's main claim, paragraph roles, topic-sentence alignment,
-   supporting evidence, flow gaps, and unsupported overclaims.
+   supporting evidence, flow gaps, style-calibration constraints, and unsupported overclaims.
 2. Compact revision plan with the smallest structural and language changes needed.
 3. Revised text.
 4. Claim/evidence risks using `Claim: ... | Evidence: ... | Risk: ...`.
-5. Remaining missing inputs, or `none`.
+5. Independent review/self-review note covering AI-pattern risk, logic, evidence, and reviewer
+   perception.
+6. Remaining missing inputs, or `none`.
 
 Revision Pass must revise structure, evidence alignment, and prose in that order. It may reorganize
 or combine paragraphs, but it must not invent results, citations, reviewer intent, hardware details,
@@ -123,11 +149,12 @@ or experimental conditions.
 Return:
 
 1. Compact HPC terminology ledger.
-2. Section outline with 3-7 bullets.
-3. Revised paragraphs with paragraph roles.
-4. Abbreviation first-use note, or `none`.
-5. Claim-evidence map for major claims using `Claim: ... | Evidence: ... | Status: supported/needs evidence`.
-6. Short self-review note covering clarity, flow, terminology, unsupported claims, scaling evidence,
+2. Style anchors and boundaries, or `none` if no style sample or venue style constraint is supplied.
+3. Section outline with 3-7 bullets.
+4. Revised paragraphs with paragraph roles.
+5. Abbreviation first-use note, or `none`.
+6. Claim-evidence map for major claims using `Claim: ... | Evidence: ... | Status: supported/needs evidence`.
+7. Short self-review note covering clarity, flow, terminology, unsupported claims, scaling evidence,
    and missing environment details.
 
 ### Evidence Review
@@ -149,7 +176,9 @@ Return:
 3. Experiment adequacy note covering baselines, scaling, causality, and end-to-end evidence.
 4. Reproducibility gap note covering hardware/software, build, launch, workloads, parameters, and artifact details.
 5. Closest-work or novelty risk note when relevant.
-6. Final action list.
+6. Final self-check verdict covering hard safety, HPC style consistency, AI-pattern risk, and
+   reviewer-readiness.
+7. Final action list.
 
 ## Optional Add-ons
 
@@ -184,6 +213,8 @@ Use this map when updating the skill later:
 - Change default behavior in `Mode Selection`, `Default Workflow`, and `Output Contracts`.
 - Change language style in `references/hpc-prose-polish.md`; keep only the trigger rule here.
 - Change revision workflow in `references/paper-revision-polish.md`.
+- Change style-sample or venue-tone calibration in `references/style-calibration.md`.
+- Change final gate and self-check reporting in `references/final-self-check.md`.
 - Change terminology policy in `references/hpc-terminology.md`; keep only the short rule list here.
 - Change section structure in the matching section guide under `references/`.
 - Change experiment/reviewer standards in `performance-evidence.md`, `paper-review.md`,

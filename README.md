@@ -49,6 +49,8 @@ Key high-level references:
 
 - `research-paper-writing/references/paper-intake.md`: intake canvas and reviewer-risk forecast
 - `research-paper-writing/references/paper-revision-polish.md`: revision workflow for reverse outlining, claim/evidence diagnosis, reviewer-comment edits, and conservative final polish
+- `research-paper-writing/references/style-calibration.md`: author, venue, and sample-based style anchors so rewrites stay paper-specific rather than generic
+- `research-paper-writing/references/final-self-check.md`: final gate for hard safety, HPC style consistency, claim/evidence completeness, AI-pattern risk, and reviewer readiness
 - `research-paper-writing/references/performance-evidence.md`: claim-evidence matching for performance claims
 - `research-paper-writing/references/hpc-prose-polish.md`: sentence-level flow, HPC/system prose polish, and per-paragraph `pass`/`revise` language rubric
 - `research-paper-writing/references/reproducibility-artifact.md`: hardware/software, build, launch, and artifact checklist
@@ -59,6 +61,8 @@ Key high-level references:
 
 - To change default behavior, edit `Mode Selection`, `Default Workflow`, and `Output Contracts` in `research-paper-writing/SKILL.md`
 - To change the revision workflow, edit `references/paper-revision-polish.md`
+- To change style calibration, edit `references/style-calibration.md`
+- To change final self-check gates, edit `references/final-self-check.md`
 - To change prose style, edit `references/hpc-prose-polish.md`
 - To change terminology rules, edit `references/hpc-terminology.md`
 - To change a section pattern, edit the matching section file such as `references/introduction.md` or `references/method.md`
