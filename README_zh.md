@@ -21,8 +21,9 @@
 
 主要模式：
 
-- `Quick polish`：保守小段落润色，处理语法、流畅度、术语一致性、LaTeX 安全和缩写首次展开检查
-- `Revision pass`：面向已有文本的章节级修改，先做 reverse outline、段落角色、claim/evidence 风险、衔接问题和 reviewer-facing 修改，再做最终润色
+- `Quick polish`：保守小段落润色，先逐句列出原句、问题、建议改写和理由，再由用户确认是否生成最终改写
+- `Revision pass`：面向已有文本的章节级修改，先做 reverse outline、段落角色、claim/evidence 风险、衔接问题，再给出逐句改写提案
+- `Pre-submission polish loop`：面向投稿前反复打磨的迭代流程，先诊断最高 reviewer 风险，再逐句提出修改，并检查 claim/evidence、跨章节一致性和下一轮 blocker
 - `Section rewrite`：章节级重写，包含术语表、mini-outline、段落角色和 claim-evidence map
 - `Evidence review`：实验、baseline、公平性、scaling、profiling、图表和 artifact 风险检查
 - `Submission review`：投稿前 reviewer 风险、复现性、closest-work 和完整行动清单
@@ -30,8 +31,9 @@
 常见使用场景：
 
 - 撰写或重写 Abstract / Introduction / Related Work / Method / Experiments / Conclusion
-- 润色句子级流畅度，让修改后的语言更像 HPC / system 论文，而不是泛泛的技术总结，同时不编造缺失的技术细节
+- 逐句润色句子级流畅度：先给出原句、问题、建议改写和理由，再保护技术含义不被误改
 - 对已有章节先诊断再修改：main claim、topic sentence、supporting evidence、flow gap、unsupported overclaim 和最终润色文本
+- 投稿前反复打磨：每轮给出 change log、reviewer-concern map、跨章节一致性检查和下一轮 blocker
 - 润色 LaTeX 文本时保护命令、引用、交叉引用、标签、公式、宏和类似代码的标识符
 - 改善非英语母语写作者的语法和流畅度，同时保留作者原本的技术含义
 - 讲清楚系统范围、硬件假设和性能目标

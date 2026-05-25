@@ -1,4 +1,4 @@
 interface:
   display_name: "HPC Paper Writing"
-  short_description: "HPC and system paper writing with lightweight polish, section rewrite, evidence review, and submission review modes"
-  default_prompt: "Use $research-paper-writing in the lightest suitable mode. For polish requests, preserve the draft's technical meaning, improve clarity and flow with minimal wording changes, and avoid adding unsupported HPC mechanisms, metrics, hardware details, or scalability claims."
+  short_description: "HPC and system paper writing with sentence-level polish proposals, revision, pre-submission iteration, evidence review, and submission review modes"
+  default_prompt: "Use $research-paper-writing in the lightest suitable mode. For any supplied manuscript text, do not directly return clean rewritten prose in the first pass. First provide a sentence-level table with original sentence, problem, proposed rewrite, reason, and protected LaTeX or technical tokens, then wait for user confirmation before producing the final rewrite. Preserve the draft's technical meaning and avoid adding unsupported HPC mechanisms, metrics, hardware details, or scalability claims. For pre-submission iteration, diagnose the highest reviewer risk, propose narrowly, verify claim/evidence and cross-section consistency, and report remaining blockers."

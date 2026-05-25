@@ -2,6 +2,33 @@
 
 Use this guide as the final language pass after structure, terminology, and evidence have been checked. The goal is reviewer-facing HPC prose: precise, fluent, concrete, and measured. For polish requests, preserve the draft's technical meaning and use the smallest wording change that makes the prose clearer.
 
+For supplied manuscript text, polish is approval-first. Do not directly return a clean rewritten
+paragraph in the first pass. First provide a sentence-level proposal that lists the original
+sentence, problem, proposed rewrite, reason, and protected LaTeX or technical tokens. Produce the
+clean paste-ready revised text only after the user confirms which proposals to apply.
+
+## Sentence-Level Proposal Gate
+
+Before rewriting supplied text, split the passage into sentences while preserving LaTeX, citations,
+inline math, macros, labels, references, code-like identifiers, variable names, units, and canonical
+HPC terms.
+
+Return proposed edits in this format:
+
+`S# | Original | Problem | Proposed rewrite | Reason | Protected tokens`
+
+Use `Problem: none` and `Proposed rewrite: keep original` when the sentence is already clear,
+technically safe, and fluent.
+
+The `Reason` field must be detailed enough for the author to decide whether to accept the change.
+Explain the language issue, reviewer-facing risk, terminology choice, claim-scope change, flow
+repair, or LaTeX-safety decision. Do not use vague reasons such as `improved clarity` without
+stating what became clearer.
+
+After the table, ask the user to confirm whether to apply all proposals, apply selected sentence
+numbers, or adjust specific proposals. Do not provide the clean rewritten paragraph until that
+confirmation arrives.
+
 ## Polish Pass
 
 For each revised paragraph, run this pass before final output:
@@ -32,6 +59,9 @@ When polishing LaTeX manuscript text:
    remove them.
 4. Polish the natural-language sentence around protected syntax so the output remains compilable
    and ready to paste back into a manuscript.
+5. In the sentence-level proposal, list protected syntax and technical identifiers in the
+   `Protected tokens` field. If a proposed rewrite must move a protected token, explain why and
+   preserve the exact token text.
 
 ## HPC Style Targets
 
@@ -91,18 +121,21 @@ Before final output, confirm:
 
 ## Change Justification
 
-When returning polished text, explain only significant changes:
+When proposing polished text, explain every sentence-level change. For unchanged sentences, give a
+short reason for keeping the original.
 
 1. Mention grammar or fluency fixes that materially improve readability.
 2. Mention terminology changes that affect correctness or reviewer perception.
 3. Mention overclaims that were weakened because evidence is missing.
-4. Mention LaTeX or citation syntax that was intentionally preserved.
-5. If the draft is already clear and correct, return the original text and state
+4. Mention sentence-flow repairs such as cause, contrast, consequence, refinement, or evidence
+   links.
+5. Mention LaTeX or citation syntax that was intentionally preserved.
+6. If the draft is already clear and correct, propose `keep original` and state
    `No meaningful change needed` rather than making cosmetic edits.
 
 ## Final Language Rubric
 
-Before returning revised prose, score every revised paragraph as `pass` or `revise`.
+Before proposing revised prose, score every revised paragraph as `pass` or `revise`.
 
 Use this compact format:
 
@@ -122,6 +155,10 @@ A paragraph can receive `pass` only if all of the following are true:
 8. LaTeX, citations, references, equations, macros, labels, and code-like identifiers are preserved.
 9. The paragraph reads fluently without awkward phrase stacking.
 
-Mark the paragraph as `revise` if any condition fails. For every `revise`, either fix the paragraph before final output or explicitly state the missing input that prevents a pass, such as `needs scale`, `needs baseline`, `needs hardware detail`, or `needs evidence`.
+Mark the paragraph as `revise` if any condition fails. For every `revise`, propose sentence-level
+fixes before final output or explicitly state the missing input that prevents a pass, such as
+`needs scale`, `needs baseline`, `needs hardware detail`, or `needs evidence`.
 
-Final output should not contain unresolved `revise` verdicts unless the user has not provided the missing evidence or setup detail needed to resolve them.
+Final output should not contain unresolved `revise` verdicts unless the user has not provided the
+missing evidence or setup detail needed to resolve them. Clean paste-ready prose should appear only
+after the user confirms the sentence-level proposal.

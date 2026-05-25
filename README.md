@@ -23,8 +23,9 @@ This repository currently provides one skill package for HPC and system-style pa
 
 Main modes:
 
-- `Quick polish`: conservative small-passage polish for grammar, fluency, terminology consistency, LaTeX safety, and abbreviation first-use checks
-- `Revision pass`: section-level revision for existing text, with reverse outline, paragraph roles, claim/evidence risks, flow gaps, and reviewer-facing edits before final polish
+- `Quick polish`: conservative small-passage polish with sentence-level original/problem/proposed-rewrite/reason tables before any clean rewrite
+- `Revision pass`: section-level revision for existing text, with reverse outline, paragraph roles, claim/evidence risks, flow gaps, and sentence-level rewrite proposals before final polish
+- `Pre-submission polish loop`: repeated submission-facing passes that diagnose the highest reviewer risk, propose sentence-level edits, verify claim/evidence and cross-section consistency, and report next-round blockers
 - `Section rewrite`: section-level rewriting with terminology ledger, mini-outline, paragraph roles, and claim-evidence map
 - `Evidence review`: experiments, baselines, fairness, scaling, profiling, figures/tables, and artifact risks
 - `Submission review`: pre-submission reviewer risks, reproducibility, closest-work risks, and final action list
@@ -32,8 +33,9 @@ Main modes:
 Typical use cases:
 
 - Drafting or rewriting Abstract / Introduction / Related Work / Method / Experiments / Conclusion
-- Polishing sentence-level flow so revised prose reads like an HPC/system paper rather than a generic technical summary, without inventing missing technical detail
+- Polishing sentence-level flow with explicit original sentence, problem, proposed rewrite, and reason before applying changes
 - Revising an existing section with diagnosis first: main claim, topic sentences, supporting evidence, flow gaps, unsupported overclaims, and final polished text
+- Running repeated pre-submission polishing loops with a change log, reviewer-concern map, cross-section consistency check, and next-round blocker list
 - Protecting LaTeX commands, citations, references, labels, equations, macros, and code-like identifiers during polish
 - Improving non-native English grammar and fluency while preserving the author's technical meaning
 - Explaining system scope, hardware assumptions, and performance targets clearly

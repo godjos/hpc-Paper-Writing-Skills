@@ -15,8 +15,10 @@ Run the checks in this order:
    LaTeX safety, and paragraph roles are consistent.
 3. Claim/evidence completeness: every major claim has a traceable source or an explicit
    missing-input note.
-4. AI-pattern and template risk: the prose does not read like generic generated academic writing.
-5. Reviewer-readiness: a skeptical reviewer can identify the contribution, mechanism, evidence
+4. Cross-section consistency: supplied sections agree on contribution, mechanism, result scope,
+   baseline, limitation, terminology, and artifact status.
+5. AI-pattern and template risk: the prose does not read like generic generated academic writing.
+6. Reviewer-readiness: a skeptical reviewer can identify the contribution, mechanism, evidence
    scope, limitations, and comparison conditions.
 
 ## Hard Safety Checklist
@@ -30,6 +32,9 @@ Mark any unresolved item as `Revise`:
   details.
 - Reviewer-response claims are supported by supplied manuscript changes or explicitly marked as
   planned work.
+- Abstract, Introduction, Method, Experiments, Related Work, and Conclusion do not contradict each
+  other on contribution scope, mechanism, result scope, baseline, limitations, or artifact status
+  when those sections are supplied.
 - LaTeX commands, citations, references, labels, math, paths, and code-like identifiers are
   preserved.
 
@@ -62,6 +67,20 @@ Flag prose that shows any of these patterns:
 Fix these when the source material gives enough detail. Otherwise mark the exact missing evidence or
 author input.
 
+## Cross-Section Consistency
+
+For submission-oriented checks, compare all supplied sections before claiming readiness:
+
+1. Abstract and Introduction make the same bounded headline claim.
+2. Method explains the mechanism that Introduction promises.
+3. Experiments evaluate the workload, platform, scale, metric, and baseline named in the headline
+   claims.
+4. Related Work distinctions support the novelty framing used in Abstract and Introduction.
+5. Conclusion does not introduce new claims or broaden the scope beyond the evidence.
+6. Terminology and abbreviations stay stable across sections.
+
+Flag each mismatch as `Revise` unless the user explicitly asked for a local-only polish pass.
+
 ## Reviewer-Readiness Questions
 
 Answer these before claiming readiness:
@@ -82,6 +101,7 @@ Final self-check: Pass/Revise
 High-risk issues: ...
 Fixed in this pass: ...
 Still needs author evidence: ...
+Cross-section consistency: pass/revise | reason: ...
 Reviewer-readiness: ...
 AI-pattern risk: pass/revise | reason: ...
 ```

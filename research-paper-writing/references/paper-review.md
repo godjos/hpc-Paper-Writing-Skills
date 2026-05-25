@@ -17,6 +17,21 @@ Every major claim, especially in Abstract and Introduction, must be:
 
 If a claim is not supported, either add evidence, weaken it, or remove it.
 
+## Pre-Submission Review Loop
+
+For repeated pre-submission polishing, treat review as a loop:
+
+1. Score the paper against the reviewer scorecard.
+2. Select the highest-risk fixable issue, not every possible issue.
+3. Revise the affected claim, section, figure/table description, limitation, or response wording.
+4. Verify the revision against evidence, terminology, LaTeX safety, and cross-section consistency.
+5. Record the change and the risk it addresses.
+6. Repeat until no fixable high-risk issue remains from the supplied context.
+
+Stop when the next action requires new experiments, stronger baselines, missing citations, hardware
+details, artifact decisions, or author judgment. Report those blockers instead of continuing with
+cosmetic polish.
+
 ## What Usually Gets a Paper Accepted
 
 1. Clear contribution: new system, runtime, compiler, algorithm, performance model, benchmark finding, or insight.
@@ -119,4 +134,6 @@ When a draft feels weak, diagnose the most likely rejection reason:
 2. Answer every scorecard item with explicit evidence from the paper.
 3. Mark each item as `pass`, `needs revision`, `needs experiment`, or `remove claim`.
 4. Revise claims, writing, experiments, method scope, or limitations accordingly.
-5. Repeat until no major rejection risk remains.
+5. Check that the revision does not create cross-section inconsistencies in contribution,
+   mechanism, result scope, baseline, limitation, terminology, or artifact status.
+6. Repeat until no fixable major rejection risk remains from the supplied context.

@@ -16,8 +16,9 @@ Choose the lightest mode that satisfies the user request.
 
 | Mode | Use when | Default references | Default output |
 | --- | --- | --- | --- |
-| Quick polish | The user asks to polish only, smooth, shorten, grammar-check, or improve wording for a paragraph or small passage. Use conservative polish by default: improve clarity, grammar, and flow while preserving the original technical meaning. | `hpc-terminology.md`, `hpc-prose-polish.md` | Revised text plus important changes, abbreviation/terminology note, and any specificity withheld because the draft lacks evidence. |
-| Revision pass | The user asks to revise, edit, improve this section, respond to reviewer comments, or modify an existing section beyond sentence-level polish. Diagnose structure and evidence before rewriting; do not treat revision as grammar-only polish. | `paper-revision-polish.md`, `style-calibration.md`, `hpc-terminology.md`, `hpc-prose-polish.md`, section guide when relevant | Diagnosis, compact revision plan, revised text, claim/evidence risks, and remaining missing inputs. |
+| Quick polish | The user asks to polish only, smooth, shorten, grammar-check, or improve wording for a paragraph or small passage. Use conservative polish by default: improve clarity, grammar, and flow while preserving the original technical meaning. | `hpc-terminology.md`, `hpc-prose-polish.md` | Sentence-level proposal table, important changes, abbreviation/terminology note, withheld specificity note, and confirmation request before clean rewrite. |
+| Revision pass | The user asks to revise, edit, improve this section, respond to reviewer comments, or modify an existing section beyond sentence-level polish. Diagnose structure and evidence before rewriting; do not treat revision as grammar-only polish. | `paper-revision-polish.md`, `style-calibration.md`, `hpc-terminology.md`, `hpc-prose-polish.md`, section guide when relevant | Diagnosis, compact revision plan, sentence-level proposal table, change rationale, claim/evidence risks, and confirmation request before clean rewrite. |
+| Pre-submission polish loop | The user is repeatedly polishing before submission, wants one more pass, asks whether the current draft is ready, or supplies reviewer/coauthor concerns plus manuscript text. Iterate through diagnosis, revision, and verification until the current pass has no fixable high-risk issue from the supplied context. | `paper-revision-polish.md`, `paper-review.md`, `final-self-check.md`, `style-calibration.md`, `performance-evidence.md`, `hpc-terminology.md`, section guide when relevant | Iteration state, reviewer-risk priorities, sentence-level proposal or targeted patch proposal, change log, reviewer-concern map, cross-section consistency check, and next-round blockers. |
 | Section rewrite | The user asks to draft or rewrite Abstract, Introduction, Related Work, Method, Experiments, or Conclusion. | `style-calibration.md`, `hpc-terminology.md`, section guide, `hpc-prose-polish.md`, `final-self-check.md` when producing final prose | Terminology ledger, mini-outline, revised paragraphs with roles, abbreviation note, and claim-evidence map. |
 | Evidence review | The user asks whether experiments, results, claims, figures, baselines, scaling, or artifacts are convincing. | `performance-evidence.md`, `experiments.md`, `figures-tables.md`, `reproducibility-artifact.md` | Reviewer risks, unsupported claims, missing evidence, and concrete revision actions. |
 | Submission review | The user asks for pre-submission, reviewer, venue, or full-paper review. | `paper-review.md`, `venue-reviewer-profile.md`, `performance-evidence.md`, `reproducibility-artifact.md`, `style-calibration.md`, `final-self-check.md` | Prioritized rejection risks, claim-evidence gaps, reproducibility gaps, closest-work risks, and final action list. |
@@ -32,15 +33,22 @@ review for a small wording request.
    execution entities, metrics, baselines, units, abbreviations, and environment assumptions.
    For polish requests, use only terms supported by the source draft or supplied user context.
 3. Load only the references required by the selected mode. Do not load every guide or example.
-4. For revision requests, run a reverse-outline pass before rewriting: main claim, paragraph
+4. For revision requests, run a reverse-outline pass before proposing rewrites: main claim, paragraph
    role, topic sentence, supporting evidence, flow gap, and unsupported overclaim.
-5. Draft or review paragraph-by-paragraph. Keep one message per paragraph and preserve the
+5. For any task that modifies supplied manuscript text, do not directly return paste-ready revised
+   prose in the first pass. First return a sentence-level rewrite proposal with original sentence,
+   problem, proposed rewrite, and reason; wait for user confirmation before producing the clean
+   revised text.
+6. Draft or review paragraph-by-paragraph. Keep one message per paragraph and preserve the
    terminology ledger.
-6. Check abbreviation order before final output: each abbreviation must be expanded at first use
+7. Check abbreviation order before final output: each abbreviation must be expanded at first use
    unless it is universally standard in context.
-7. Check major claims against available evidence. Weaken or remove unsupported claims.
-8. Run the prose polish pass when producing final prose.
-9. For full-paper or submission work, finish with adversarial self-review.
+8. Check major claims against available evidence. Weaken or remove unsupported claims.
+9. For iterative pre-submission work, run a three-stage loop: diagnose the highest reviewer risk,
+   propose changes only for the affected text, then verify claim/evidence, cross-section
+   consistency, and reviewer-concern closure before starting another pass.
+10. Run the prose polish pass when producing final prose.
+11. For full-paper or submission work, finish with adversarial self-review.
 
 ## Structured Gates
 
@@ -52,16 +60,25 @@ or submission workflow.
 2. Structure diagnosis: run the reverse outline or section outline before rewriting.
 3. Style calibration: use `style-calibration.md` when user samples, venue norms, or prior draft
    tone should guide the rewrite.
-4. Rewrite or review: make the smallest changes that fix structure, evidence, terminology, and
+4. Sentence-level proposal gate: before rewriting supplied text, list each affected sentence with
+   original sentence, problem, proposed rewrite, reason, and protected LaTeX/technical tokens.
+5. User confirmation gate: after the sentence-level proposal, stop and ask the user to confirm,
+   reject, or adjust the proposed rewrites. Produce clean paste-ready prose only after confirmation.
+6. Rewrite or review: make the smallest changes that fix structure, evidence, terminology, and
    prose in that order.
-5. Independent review: when a reviewer or verifier subagent is available and the task is a
+7. Revision trace: for pre-submission or reviewer-driven work, record why each substantial change
+   was made and what reviewer risk or claim/evidence gap it addresses.
+8. Independent review: when a reviewer or verifier subagent is available and the task is a
    substantial revision, rewrite, or submission review, use it for a separate AI-pattern, logic,
    evidence, and reviewer-risk pass. If no subagent is available, run the same pass yourself and
    label it as self-review.
-6. Fact and claim verification: trace every performance, novelty, scalability, artifact, baseline,
+9. Fact and claim verification: trace every performance, novelty, scalability, artifact, baseline,
    and reviewer-response claim to supplied text, results, citations, or an explicit missing-input
    note.
-7. Final self-check: use `final-self-check.md` for final prose, full-paper review, or any answer
+10. Cross-section consistency: for submission-oriented revision, check that Abstract, Introduction,
+   Method, Experiments, Related Work, and Conclusion use compatible contribution, mechanism,
+   result, limitation, terminology, and baseline scopes when those sections are supplied.
+11. Final self-check: use `final-self-check.md` for final prose, full-paper review, or any answer
    that claims submission readiness.
 
 ## Reference Router
@@ -109,6 +126,10 @@ not exact wording.
 9. State comparison conditions, platform assumptions, and experimental settings when needed for
    reviewer trust.
 10. Prefer concise, reviewer-facing prose over mechanical academic phrasing.
+11. For supplied manuscript text, preserve LaTeX commands, citations, labels, references, equations,
+    macros, code-like identifiers, canonical technical terms, capitalization, units, and variable
+    names unless the user explicitly approves a change.
+12. Explain every proposed rewrite in enough detail for the author to accept, reject, or adjust it.
 
 ## Output Contracts
 
@@ -116,16 +137,22 @@ not exact wording.
 
 Return:
 
-1. Revised text.
+1. Sentence-level proposal table using `S# | Original | Problem | Proposed rewrite | Reason |
+   Protected tokens`.
 2. Important changes, limited to changes that affect clarity, correctness, fluency, LaTeX safety,
    or reviewer perception.
 3. Abbreviation/terminology note, or `none`.
 4. Withheld specificity note explaining any more-specific term that was preserved, weakened, or not
    introduced because the draft lacks evidence or setup detail.
+5. Confirmation request: ask the user whether to apply the proposed rewrites, apply only selected
+   items, or adjust any proposal.
 
 Quick Polish must not add or replace workload, platform, parallel model, bottleneck, metric,
 baseline, hardware, communication pattern, memory hierarchy, system layer, or mechanism details
 unless they are present in the user's draft or explicitly supplied context.
+
+Quick Polish must not return a clean paste-ready revised paragraph until the user confirms the
+sentence-level proposal.
 
 ### Revision Pass
 
@@ -134,15 +161,22 @@ Return:
 1. Diagnosis covering the section's main claim, paragraph roles, topic-sentence alignment,
    supporting evidence, flow gaps, style-calibration constraints, and unsupported overclaims.
 2. Compact revision plan with the smallest structural and language changes needed.
-3. Revised text.
+3. Sentence-level rewrite proposal using `S# | Original | Problem | Proposed rewrite | Reason |
+   Protected tokens`.
 4. Claim/evidence risks using `Claim: ... | Evidence: ... | Risk: ...`.
-5. Independent review/self-review note covering AI-pattern risk, logic, evidence, and reviewer
+5. Change rationale for substantial structural, evidence, terminology, or claim-scope edits.
+6. Independent review/self-review note covering AI-pattern risk, logic, evidence, and reviewer
    perception.
-6. Remaining missing inputs, or `none`.
+7. Remaining missing inputs, or `none`.
+8. Confirmation request before producing clean revised text.
 
 Revision Pass must revise structure, evidence alignment, and prose in that order. It may reorganize
 or combine paragraphs, but it must not invent results, citations, reviewer intent, hardware details,
 or experimental conditions.
+
+Revision Pass must not return clean paste-ready revised prose until the user confirms the
+sentence-level proposal. If a structural change requires moving or merging paragraphs, describe the
+paragraph-level change first and then give sentence-level proposals for the affected text.
 
 ### Section Rewrite
 
@@ -151,11 +185,14 @@ Return:
 1. Compact HPC terminology ledger.
 2. Style anchors and boundaries, or `none` if no style sample or venue style constraint is supplied.
 3. Section outline with 3-7 bullets.
-4. Revised paragraphs with paragraph roles.
+4. For rewrites of supplied text, sentence-level rewrite proposal using `S# | Original | Problem |
+   Proposed rewrite | Reason | Protected tokens`; for draft-from-scratch requests with no source
+   text, proposed paragraphs with paragraph roles.
 5. Abbreviation first-use note, or `none`.
 6. Claim-evidence map for major claims using `Claim: ... | Evidence: ... | Status: supported/needs evidence`.
 7. Short self-review note covering clarity, flow, terminology, unsupported claims, scaling evidence,
    and missing environment details.
+8. Confirmation request before producing clean revised text when source text was supplied.
 
 ### Evidence Review
 
@@ -166,6 +203,32 @@ Return:
 3. Scaling, profiling, ablation, and end-to-end evidence gaps.
 4. Figure/table readability issues when relevant.
 5. Concrete revision actions, ordered by reviewer risk.
+
+### Pre-Submission Polish Loop
+
+Return:
+
+1. Iteration state: current pass goal, target section(s), supplied evidence, venue/reviewer
+   constraints, and unresolved risks from prior passes when provided.
+2. Reviewer-risk priorities, ordered by likelihood of harming acceptance.
+3. Sentence-level rewrite proposal or targeted patch proposal, scoped to the highest-risk fixable
+   issues, using `S# | Original | Problem | Proposed rewrite | Reason | Protected tokens`.
+4. Change log using `Change: ... | Reason: ... | Risk addressed: ...`.
+5. Reviewer-concern map using `Concern: ... | Manuscript change: ... | Response status:
+   addressed/partially addressed/needs evidence`.
+6. Cross-section consistency check for contribution, mechanism, result scope, terminology,
+   baseline, limitations, and artifact claims when the relevant sections are supplied.
+7. Verification result: claim/evidence, LaTeX safety, abbreviation first use, AI-pattern risk, and
+   reviewer-readiness.
+8. Next-round blockers, or `none`.
+9. Confirmation request before producing clean revised text.
+
+Pre-Submission Polish Loop must not declare readiness merely because prose is fluent. It must close
+all fixable high-risk reviewer issues from the supplied context or clearly mark the missing
+evidence, experiment, citation, hardware detail, baseline detail, or author decision.
+
+Pre-Submission Polish Loop must not return clean paste-ready revised prose until the user confirms
+the sentence-level proposal for the current pass.
 
 ### Submission Review
 
@@ -185,7 +248,6 @@ Return:
 Include these only when requested or clearly necessary:
 
 - Paragraph language rubric: `P# | role: ... | verdict: pass/revise | reason: ...`
-- Change justification for significant polish or revision decisions.
 - Venue/reviewer-risk note.
 - Full five-dimension self-review: contribution, writing clarity, experimental strength,
   evaluation completeness, and method design soundness.
