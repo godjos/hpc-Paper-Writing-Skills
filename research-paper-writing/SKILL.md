@@ -145,6 +145,21 @@ not exact wording.
 
 ## Output Contracts
 
+### Suggestion Priority
+
+Use this priority scale for proposed manuscript changes, reviewer risks, claim/evidence risks,
+and final action lists:
+
+- `P0 must fix`: correctness, logic, claim/evidence mismatch, unsupported overclaim, LaTeX safety,
+  reviewer-blocking structure, or clear language error.
+- `P1 should fix`: changes that materially improve clarity, flow, reviewer perception,
+  terminology precision, or argument strength.
+- `P2 optional`: style, concision, phrasing, or presentation polish that is useful but not required
+  for correctness or reviewer comprehension.
+
+When only two or three low-risk edits are proposed, priority can be brief, but every revision or
+review output should still distinguish must-fix issues from optional polish.
+
 ### Confirmed Manuscript Edit Addendum
 
 Use this addendum only after the user has already reviewed the proposal and confirmed that the
@@ -163,8 +178,8 @@ the request asks for direct edits; return the normal proposal table first.
 
 Return:
 
-1. Sentence-level proposal table using `S# | Original | Problem | Proposed rewrite | Reason |
-   Protected tokens`.
+1. Sentence-level proposal table using `S# | Priority | Original | Problem | Proposed rewrite |
+   Reason | Protected tokens`.
 2. Important changes, limited to changes that affect clarity, correctness, fluency, LaTeX safety,
    or reviewer perception.
 3. Abbreviation/terminology note, or `none`.
@@ -187,9 +202,9 @@ Return:
 1. Diagnosis covering the section's main claim, paragraph roles, topic-sentence alignment,
    supporting evidence, flow gaps, style-calibration constraints, and unsupported overclaims.
 2. Compact revision plan with the smallest structural and language changes needed.
-3. Sentence-level rewrite proposal using `S# | Original | Problem | Proposed rewrite | Reason |
-   Protected tokens`.
-4. Claim/evidence risks using `Claim: ... | Evidence: ... | Risk: ...`.
+3. Sentence-level rewrite proposal using `S# | Priority | Original | Problem | Proposed rewrite |
+   Reason | Protected tokens`.
+4. Claim/evidence risks using `Priority: P0/P1/P2 | Claim: ... | Evidence: ... | Risk: ...`.
 5. Change rationale for substantial structural, evidence, terminology, or claim-scope edits.
 6. Independent review/self-review note covering AI-pattern risk, logic, evidence, and reviewer
    perception.
@@ -211,9 +226,9 @@ Return:
 1. Compact HPC terminology ledger.
 2. Style anchors and boundaries, or `none` if no style sample or venue style constraint is supplied.
 3. Section outline with 3-7 bullets.
-4. For rewrites of supplied text, sentence-level rewrite proposal using `S# | Original | Problem |
-   Proposed rewrite | Reason | Protected tokens`; for draft-from-scratch requests with no source
-   text, proposed paragraphs with paragraph roles.
+4. For rewrites of supplied text, sentence-level rewrite proposal using `S# | Priority | Original |
+   Problem | Proposed rewrite | Reason | Protected tokens`; for draft-from-scratch requests with
+   no source text, proposed paragraphs with paragraph roles.
 5. Abbreviation first-use note, or `none`.
 6. Claim-evidence map for major claims using `Claim: ... | Evidence: ... | Status: supported/needs evidence`.
 7. Short self-review note covering clarity, flow, terminology, unsupported claims, scaling evidence,
@@ -228,7 +243,7 @@ Return:
 2. Baseline fairness and comparison-condition risks.
 3. Scaling, profiling, ablation, and end-to-end evidence gaps.
 4. Figure/table readability issues when relevant.
-5. Concrete revision actions, ordered by reviewer risk.
+5. Concrete revision actions, each labeled `P0/P1/P2` and ordered by reviewer risk.
 
 ### Pre-Submission Polish Loop
 
@@ -236,10 +251,10 @@ Return:
 
 1. Iteration state: current pass goal, target section(s), supplied evidence, venue/reviewer
    constraints, and unresolved risks from prior passes when provided.
-2. Reviewer-risk priorities, ordered by likelihood of harming acceptance.
+2. Reviewer-risk priorities labeled `P0/P1/P2`, ordered by likelihood of harming acceptance.
 3. Sentence-level rewrite proposal or targeted patch proposal, scoped to the highest-risk fixable
-   issues, using `S# | Original | Problem | Proposed rewrite | Reason | Protected tokens`.
-4. Change log using `Change: ... | Reason: ... | Risk addressed: ...`.
+   issues, using `S# | Priority | Original | Problem | Proposed rewrite | Reason | Protected tokens`.
+4. Change log using `Priority: P0/P1/P2 | Change: ... | Reason: ... | Risk addressed: ...`.
 5. Reviewer-concern map using `Concern: ... | Manuscript change: ... | Response status:
    addressed/partially addressed/needs evidence`.
 6. Cross-section consistency check for contribution, mechanism, result scope, terminology,
@@ -260,14 +275,14 @@ the sentence-level proposal for the current pass.
 
 Return:
 
-1. Top reviewer risks, ordered by severity.
+1. Top reviewer risks labeled `P0/P1/P2` and ordered by severity.
 2. Claim-evidence map for headline claims.
 3. Experiment adequacy note covering baselines, scaling, causality, and end-to-end evidence.
 4. Reproducibility gap note covering hardware/software, build, launch, workloads, parameters, and artifact details.
 5. Closest-work or novelty risk note when relevant.
 6. Final self-check verdict covering hard safety, HPC style consistency, AI-pattern risk, and
    reviewer-readiness.
-7. Final action list.
+7. Final action list labeled `P0/P1/P2`.
 
 ## Optional Add-ons
 

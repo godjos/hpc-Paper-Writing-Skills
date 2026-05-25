@@ -128,6 +128,20 @@ When a draft feels weak, diagnose the most likely rejection reason:
 6. Unsupported portability claim: narrow the claim or add platforms/backends.
 7. Hidden limitation: state the scope boundary and explain why the contribution remains valuable.
 
+## Review Priority Labels
+
+Label reviewer risks and action items with this scale:
+
+- `P0 must fix`: likely rejection risk, correctness problem, unsupported headline claim,
+  misleading experiment framing, reproducibility blocker, or major cross-section inconsistency.
+- `P1 should fix`: issue that materially improves reviewer confidence, clarity, evidence framing,
+  closest-work positioning, or experimental interpretation.
+- `P2 optional`: useful polish, presentation cleanup, or local wording improvement that does not
+  change the reviewer decision by itself.
+
+Order review output by P0, then P1, then P2. If a list is already ordered by reviewer severity, keep
+that order inside each priority group.
+
 ## Adversarial Writing Workflow
 
 1. Read the paper as a skeptical reviewer for the target venue.

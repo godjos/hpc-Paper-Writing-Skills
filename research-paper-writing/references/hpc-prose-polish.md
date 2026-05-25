@@ -15,10 +15,18 @@ HPC terms.
 
 Return proposed edits in this format:
 
-`S# | Original | Problem | Proposed rewrite | Reason | Protected tokens`
+`S# | Priority | Original | Problem | Proposed rewrite | Reason | Protected tokens`
 
-Use `Problem: none` and `Proposed rewrite: keep original` when the sentence is already clear,
-technically safe, and fluent.
+Use this priority scale:
+
+- `P0 must fix`: correctness, unsupported claim, LaTeX/citation safety, or clear grammar that could
+  confuse the technical meaning.
+- `P1 should fix`: changes that materially improve fluency, flow, terminology precision, or reviewer
+  perception.
+- `P2 optional`: minor style, concision, or phrasing improvements.
+
+Use `Priority: P2 optional`, `Problem: none`, and `Proposed rewrite: keep original` when the
+sentence is already clear, technically safe, and fluent.
 
 The `Reason` field must be detailed enough for the author to decide whether to accept the change.
 Explain the language issue, reviewer-facing risk, terminology choice, claim-scope change, flow

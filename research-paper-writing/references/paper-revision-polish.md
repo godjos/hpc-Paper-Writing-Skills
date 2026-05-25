@@ -53,7 +53,7 @@ provides reviewer/coauthor concerns:
 4. Propose narrowly: change manuscript prose, claim scope, paragraph order, or transitions only
    where the diagnosis requires it, and present the proposed sentence-level edits for confirmation.
 5. Record the trace: report each substantial edit as
-   `Change: ... | Reason: ... | Risk addressed: ...`.
+   `Priority: P0/P1/P2 | Change: ... | Reason: ... | Risk addressed: ...`.
 6. Verify the pass: check claim/evidence support, LaTeX safety, abbreviation first use,
    AI-pattern risk, and cross-section consistency where supplied.
 7. Decide the next action: continue only if another high-risk issue is fixable from the supplied
@@ -114,23 +114,41 @@ Use the smallest proposed change that fixes the diagnosed problem:
 6. Add a missing bridge sentence only when the relationship is implied by the draft or user context.
 7. Keep reviewer-facing prose concise; avoid ornamental academic phrasing.
 
+## Suggestion Priority
+
+Label proposed changes with this priority scale:
+
+- `P0 must fix`: correctness, logic, claim/evidence mismatch, unsupported overclaim, LaTeX safety,
+  reviewer-blocking structure, or clear language error.
+- `P1 should fix`: changes that materially improve clarity, flow, reviewer perception,
+  terminology precision, or argument strength.
+- `P2 optional`: style, concision, phrasing, or presentation polish that is useful but not required
+  for correctness or reviewer comprehension.
+
+Use priority labels for sentence-level rewrite proposals, reviewer-risk lists, claim/evidence
+risks, and action lists. Order P0 before P1 before P2 unless the user asks for a different view.
+
 ## Sentence-Level Rewrite Proposal
 
 For every sentence affected by revision, return:
 
-`S# | Original | Problem | Proposed rewrite | Reason | Protected tokens`
+`S# | Priority | Original | Problem | Proposed rewrite | Reason | Protected tokens`
 
 Rules:
 
 1. Keep sentence numbering stable within the supplied passage.
-2. Use `Problem: none` and `Proposed rewrite: keep original` for sentences that should not change.
-3. Explain each reason in terms of grammar, flow, reviewer perception, claim scope, evidence
+2. Use `Priority: P2 optional`, `Problem: none`, and `Proposed rewrite: keep original` for
+   sentences that should not change.
+3. Use `P0 must fix` for changes needed to avoid incorrect, unsupported, inconsistent, or
+   reviewer-blocking text; use `P1 should fix` for meaningful clarity or argument improvements;
+   use `P2 optional` for cosmetic polish.
+4. Explain each reason in terms of grammar, flow, reviewer perception, claim scope, evidence
    support, terminology precision, or LaTeX safety.
-4. List protected LaTeX commands, citations, labels, references, equations, macros, code-like
+5. List protected LaTeX commands, citations, labels, references, equations, macros, code-like
    identifiers, canonical terms, units, and variable names.
-5. If the revision requires paragraph reordering, splitting, or merging, report that structural
+6. If the revision requires paragraph reordering, splitting, or merging, report that structural
    proposal before the sentence table, then give sentence-level proposals for the affected text.
-6. End the first-pass revision with a confirmation request. Do not include clean paste-ready prose
+7. End the first-pass revision with a confirmation request. Do not include clean paste-ready prose
    until the user confirms all or selected proposals.
 
 ## Claim and Evidence Gate
@@ -146,7 +164,7 @@ For every major claim, confirm:
 
 Use this compact format when reporting risks:
 
-`Claim: ... | Evidence: ... | Risk: unsupported performance claim; needs scale and baseline`
+`Priority: P0 must fix | Claim: ... | Evidence: ... | Risk: unsupported performance claim; needs scale and baseline`
 
 ## Cross-Section Consistency Gate
 
@@ -216,13 +234,14 @@ After revision, apply language polish conservatively:
 
 Return:
 
-1. Diagnosis: reverse outline summary plus the highest-risk issues.
-2. Revision plan: the concrete structural, evidence, terminology, and polish changes to make.
+1. Diagnosis: reverse outline summary plus the highest-risk issues labeled `P0/P1/P2`.
+2. Revision plan: the concrete structural, evidence, terminology, and polish changes to make,
+   labeled `P0/P1/P2`.
 3. Style calibration note: anchors used and boundaries preserved, or `none`.
 4. Sentence-level rewrite proposal:
-   `S# | Original | Problem | Proposed rewrite | Reason | Protected tokens`.
+   `S# | Priority | Original | Problem | Proposed rewrite | Reason | Protected tokens`.
 5. Change log: substantial edits and why they were made, using
-   `Change: ... | Reason: ... | Risk addressed: ...`.
+   `Priority: P0/P1/P2 | Change: ... | Reason: ... | Risk addressed: ...`.
 6. Independent review/self-review note: AI-pattern risk, logic continuity, role repetition,
    evidence rhythm, and reviewer perception.
 7. Reviewer-concern map: only when reviewer or coauthor concerns are supplied.

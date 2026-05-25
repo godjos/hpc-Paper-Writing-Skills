@@ -28,12 +28,12 @@
 - `Evidence review`：实验、baseline、公平性、scaling、profiling、图表和 artifact 风险检查
 - `Submission review`：投稿前 reviewer 风险、复现性、closest-work 和完整行动清单
 
-默认行为：任何润色、修改或重写已有论文文本的请求，第一轮都只给逐句修改提案和理由，不能直接改论文源文件；即使用户说“直接改原文”“直接修改文件”或“应用到 manuscript/source”，也必须先给提案并等待确认。只有用户看过提案并确认应用后，技能才会修改源文件；修改后必须报告改了哪些文件、哪些句子或段落、修改理由，以及保留了哪些 LaTeX 命令、引用和技术含义。
+默认行为：任何润色、修改或重写已有论文文本的请求，第一轮都只给逐句修改提案和理由，并用轻量优先级标记区分 `P0 必改`、`P1 建议改` 和 `P2 可选优化`；不能直接改论文源文件。即使用户说“直接改原文”“直接修改文件”或“应用到 manuscript/source”，也必须先给提案并等待确认。只有用户看过提案并确认应用后，技能才会修改源文件；修改后必须报告改了哪些文件、哪些句子或段落、修改理由，以及保留了哪些 LaTeX 命令、引用和技术含义。
 
 常见使用场景：
 
 - 撰写或重写 Abstract / Introduction / Related Work / Method / Experiments / Conclusion
-- 逐句润色句子级流畅度：先给出原句、问题、建议改写和理由，再保护技术含义不被误改
+- 逐句润色句子级流畅度：先给出优先级、原句、问题、建议改写和理由，再保护技术含义不被误改
 - 用户确认逐句提案后，应用最小安全源文件补丁，并给出逐项 change log 和理由
 - 对已有章节先诊断再修改：main claim、topic sentence、supporting evidence、flow gap、unsupported overclaim 和最终润色文本
 - 投稿前反复打磨：每轮给出 change log、reviewer-concern map、跨章节一致性检查和下一轮 blocker
@@ -43,6 +43,7 @@
 - 通过 workload/platform/metric 术语表保持 HPC 专用术语一致
 - 做 claim-evidence 对齐检查，尤其是与 scaling、profiling 和端到端结果对齐
 - 提交前从 reviewer 视角进行自审
+- 用 `P0/P1/P2` 区分必改问题、建议修改和可选润色，避免所有建议看起来同等重要
 - 强化实验设置清晰度、可复现性和可扩展性叙述
 - 在改写前建立 paper-intake 画布：venue、论文类型、瓶颈、证据包和 reviewer 风险
 - 审查 baseline 公平性、强/弱扩展、profiling 因果链和 artifact 准备情况
