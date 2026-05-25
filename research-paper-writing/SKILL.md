@@ -39,16 +39,22 @@ review for a small wording request.
    prose in the first pass. First return a sentence-level rewrite proposal with original sentence,
    problem, proposed rewrite, and reason; wait for user confirmation before producing the clean
    revised text.
-6. Draft or review paragraph-by-paragraph. Keep one message per paragraph and preserve the
+6. Never edit manuscript files in place on the first pass, regardless of how directly the user asks.
+   The first pass must propose edits with reasons and protected tokens, then wait for confirmation.
+7. Apply source-file edits only after the user has seen the proposal and confirms that the changes
+   should be applied. Then make the smallest safe manuscript patch and report the edited file,
+   affected section, and a concrete change log with reasons for every paragraph-level change and
+   every non-trivial sentence-level change.
+8. Draft or review paragraph-by-paragraph. Keep one message per paragraph and preserve the
    terminology ledger.
-7. Check abbreviation order before final output: each abbreviation must be expanded at first use
+9. Check abbreviation order before final output: each abbreviation must be expanded at first use
    unless it is universally standard in context.
-8. Check major claims against available evidence. Weaken or remove unsupported claims.
-9. For iterative pre-submission work, run a three-stage loop: diagnose the highest reviewer risk,
+10. Check major claims against available evidence. Weaken or remove unsupported claims.
+11. For iterative pre-submission work, run a three-stage loop: diagnose the highest reviewer risk,
    propose changes only for the affected text, then verify claim/evidence, cross-section
    consistency, and reviewer-concern closure before starting another pass.
-10. Run the prose polish pass when producing final prose.
-11. For full-paper or submission work, finish with adversarial self-review.
+12. Run the prose polish pass when producing final prose.
+13. For full-paper or submission work, finish with adversarial self-review.
 
 ## Structured Gates
 
@@ -64,21 +70,24 @@ or submission workflow.
    original sentence, problem, proposed rewrite, reason, and protected LaTeX/technical tokens.
 5. User confirmation gate: after the sentence-level proposal, stop and ask the user to confirm,
    reject, or adjust the proposed rewrites. Produce clean paste-ready prose only after confirmation.
-6. Rewrite or review: make the smallest changes that fix structure, evidence, terminology, and
+6. Source-file edit gate: do not apply changes directly to manuscript files until a prior proposal
+   has been shown and the user confirms it should be applied. Direct edits still require a post-edit
+   report with detailed reasons; do not silently rewrite manuscript text.
+7. Rewrite or review: make the smallest changes that fix structure, evidence, terminology, and
    prose in that order.
-7. Revision trace: for pre-submission or reviewer-driven work, record why each substantial change
+8. Revision trace: for pre-submission or reviewer-driven work, record why each substantial change
    was made and what reviewer risk or claim/evidence gap it addresses.
-8. Independent review: when a reviewer or verifier subagent is available and the task is a
+9. Independent review: when a reviewer or verifier subagent is available and the task is a
    substantial revision, rewrite, or submission review, use it for a separate AI-pattern, logic,
    evidence, and reviewer-risk pass. If no subagent is available, run the same pass yourself and
    label it as self-review.
-9. Fact and claim verification: trace every performance, novelty, scalability, artifact, baseline,
+10. Fact and claim verification: trace every performance, novelty, scalability, artifact, baseline,
    and reviewer-response claim to supplied text, results, citations, or an explicit missing-input
    note.
-10. Cross-section consistency: for submission-oriented revision, check that Abstract, Introduction,
+11. Cross-section consistency: for submission-oriented revision, check that Abstract, Introduction,
    Method, Experiments, Related Work, and Conclusion use compatible contribution, mechanism,
    result, limitation, terminology, and baseline scopes when those sections are supplied.
-11. Final self-check: use `final-self-check.md` for final prose, full-paper review, or any answer
+12. Final self-check: use `final-self-check.md` for final prose, full-paper review, or any answer
    that claims submission readiness.
 
 ## Reference Router
@@ -130,8 +139,25 @@ not exact wording.
     macros, code-like identifiers, canonical technical terms, capitalization, units, and variable
     names unless the user explicitly approves a change.
 12. Explain every proposed rewrite in enough detail for the author to accept, reject, or adjust it.
+13. When confirmed manuscript edits are applied, never report only "polished" or "updated"; include
+    what changed, why it improves reviewer comprehension, and which technical meaning or LaTeX
+    tokens were intentionally preserved.
 
 ## Output Contracts
+
+### Confirmed Manuscript Edit Addendum
+
+Use this addendum only after the user has already reviewed the proposal and confirmed that the
+edits should be applied to the manuscript file/source. After applying the patch, return:
+
+1. Changed file(s) and target section(s).
+2. Change log using `Change: ... | Reason: ... | Protected meaning/tokens: ...`.
+3. Claim/evidence notes for any strengthened, weakened, moved, or removed claim.
+4. Verification note covering LaTeX token preservation, citation/reference preservation,
+   abbreviation first use, and unsupported specificity.
+
+If the user has not already confirmed a specific proposal, do not modify manuscript files even when
+the request asks for direct edits; return the normal proposal table first.
 
 ### Quick Polish
 

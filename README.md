@@ -30,10 +30,18 @@ Main modes:
 - `Evidence review`: experiments, baselines, fairness, scaling, profiling, figures/tables, and artifact risks
 - `Submission review`: pre-submission reviewer risks, reproducibility, closest-work risks, and final action list
 
+Default behavior: any request to polish, revise, or rewrite existing manuscript text produces
+sentence-level proposals and reasons first; it must not edit manuscript source files on the first
+pass. Even if the user says to directly edit/apply changes to the manuscript or source, the skill
+must first show the proposal and wait for confirmation. Only after the user confirms the proposal
+may it edit source files. After direct edits, it must report the changed files, affected sentences
+or paragraphs, change reasons, and preserved LaTeX commands, citations, and technical meaning.
+
 Typical use cases:
 
 - Drafting or rewriting Abstract / Introduction / Related Work / Method / Experiments / Conclusion
 - Polishing sentence-level flow with explicit original sentence, problem, proposed rewrite, and reason before applying changes
+- Applying a minimal safe source-file patch with a detailed change log after the user confirms the sentence-level proposal
 - Revising an existing section with diagnosis first: main claim, topic sentences, supporting evidence, flow gaps, unsupported overclaims, and final polished text
 - Running repeated pre-submission polishing loops with a change log, reviewer-concern map, cross-section consistency check, and next-round blocker list
 - Protecting LaTeX commands, citations, references, labels, equations, macros, and code-like identifiers during polish
